@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Mon Argent"
+description = "A minimal vanilla HTML, CSS, and JavaScript starter page ready for custom code."
+version = "1.0.0"
+id = "artifacts/mon-argent"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23299
+
+[services.development]
+run = "pnpm --filter @workspace/mon-argent run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mon-argent", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mon-argent/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23299"
+BASE_PATH = "/"

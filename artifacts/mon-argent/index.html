@@ -1,14 +1,923 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mon Argent</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script type="module" src="./app.js"></script>
-  </head>
-  <body>
-    <main id="app"></main>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon Argent</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --text: #192332;
+      --muted: #778293;
+      --line: #e5e9ee;
+      --blue: #385fdb;
+      --green: #128260;
+      --red: #cf4d55;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid var(--line);
+      padding: 18px max(20px, calc((100vw - 1060px)/2));
+    }
+    header h1 { margin: 0; font-size: 23px; }
+    .subtitle { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 12px 20px;
+      background: white;
+      border-bottom: 1px solid var(--line);
+      justify-content: center;
+    }
+    button {
+      cursor: pointer;
+      font: inherit;
+      border: 0;
+    }
+    .tab {
+      padding: 11px 15px;
+      white-space: nowrap;
+      border-radius: 9px;
+      background: transparent;
+      color: #657083;
+    }
+    .tab.active {
+      background: #ecf0ff;
+      color: var(--blue);
+      font-weight: 650;
+    }
+    main { max-width: 1060px; margin: 28px auto; padding: 0 18px 80px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .two { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 21px;
+      margin-bottom: 16px;
+    }
+    .label { color: var(--muted); font-size: 13px; }
+    .number { font-size: 27px; font-weight: 750; margin-top: 10px; }
+    .positive { color: var(--green); }
+    .negative { color: var(--red); }
+    h2 { font-size: 23px; margin: 0 0 18px; }
+    h3 { font-size: 16px; margin: 0 0 16px; }
+    p { line-height: 1.6; }
+    .small { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .entry { border-bottom: 1px solid var(--line); padding: 12px 0; }
+    .entry:last-child { border-bottom: 0; }
+    .formgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    label { display: block; color: #536073; margin-bottom: 6px; font-size: 12px; }
+    input, select {
+      width: 100%;
+      border: 1px solid #dce1e8;
+      background: white;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 9px;
+      font: inherit;
+      outline-color: var(--blue);
+    }
+    .field { margin-bottom: 14px; }
+    .primary {
+      color: white;
+      background: var(--blue);
+      padding: 12px 18px;
+      border-radius: 9px;
+      font-weight: 650;
+    }
+    .secondary {
+      background: #eef1f5;
+      color: #455166;
+      padding: 9px 12px;
+      border-radius: 8px;
+    }
+    .danger {
+      background: #fcebed;
+      color: var(--red);
+      padding: 9px 12px;
+      border-radius: 8px;
+    }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 13px; }
+    .bar {
+      height: 10px;
+      border-radius: 20px;
+      background: #edf0f4;
+      overflow: hidden;
+      margin: 12px 0 8px;
+    }
+    .fill { height: 100%; background: var(--blue); border-radius: 20px; }
+    .pill {
+      display: inline-block;
+      padding: 5px 9px;
+      background: #eef2fb;
+      border-radius: 30px;
+      color: #50617e;
+      font-size: 11px;
+    }
+    .notice { background: #edf2ff; border-radius: 10px; padding: 13px; color: #425b96; }
+    @media(max-width: 650px) {
+      nav { justify-content: flex-start; }
+      .grid, .two, .formgrid { grid-template-columns: 1fr; }
+      .card { padding: 17px; }
+      .number { font-size: 24px; }
+      main { margin-top: 20px; }
+      .tab { padding: 10px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Mon Argent</h1>
+  <div class="subtitle">Gestion personnelle · CHF</div>
+</header>
+
+<nav>
+  <button class="tab" data-tab="home">Accueil</button>
+  <button class="tab" data-tab="operations">Opérations</button>
+  <button class="tab" data-tab="budgets">Budgets</button>
+  <button class="tab" data-tab="projects">Projets & envies</button>
+  <button class="tab" data-tab="settings">Paramètres</button>
+</nav>
+
+<main id="app"></main>
+
+<script>
+const KEY = "monargent-v1";
+
+const categories = {
+  food: "Nourriture",
+  outings: "Sorties",
+  transport: "Transport",
+  shopping: "Shopping",
+  sport: "Sport",
+  projects: "Achats / projets",
+  other: "Autres"
+};
+
+const initialData = () => ({
+  accounts: [
+    { id: "bank", name: "Compte bancaire", opening: 0 },
+    { id: "cash", name: "Espèces", opening: 0 },
+    { id: "savings", name: "Épargne", opening: 0 }
+  ],
+  transactions: [],
+  projects: [],
+  reserves: [],
+  budgets: {},
+  monthlyEstimate: 0
+});
+
+let data;
+try {
+  const stored = JSON.parse(localStorage.getItem(KEY));
+  data = validData(stored) ? stored : initialData();
+} catch {
+  data = initialData();
+}
+
+let tab = "home";
+let operationKind = "expense";
+let selectedMonth = localDate().slice(0, 7);
+
+function validData(d) {
+  return d && Array.isArray(d.accounts)
+    && d.accounts.length > 0
+    && Array.isArray(d.transactions)
+    && Array.isArray(d.projects)
+    && Array.isArray(d.reserves)
+    && d.budgets && typeof d.budgets === "object";
+}
+
+function uid() {
+  return crypto.randomUUID
+    ? crypto.randomUUID()
+    : Date.now() + "-" + Math.random();
+}
+
+function localDate() {
+  const d = new Date();
+  const p = n => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+}
+
+function money(n) {
+  return Number(n || 0).toLocaleString("fr-CH", {
+    style: "currency", currency: "CHF"
+  });
+}
+
+function round(n) {
+  return Math.round((n + Number.EPSILON) * 100) / 100;
+}
+
+function num(value) {
+  return Number(String(value ?? "").replace(",", "."));
+}
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;",
+       '"':"&quot;", "'":"&#39;" })[c]);
+}
+
+function save() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(data));
+    render();
+  } catch {
+    alert("Sauvegarde impossible. Exporte tes données et vérifie l'espace du navigateur.");
+  }
+}
+
+function balance(accountId) {
+  const account = data.accounts.find(a => a.id === accountId);
+  if (!account) return 0;
+  let total = Number(account.opening) || 0;
+  for (const t of data.transactions) {
+    if (t.kind === "income" && t.accountId === accountId) total += t.amount;
+    if (t.kind === "expense" && t.accountId === accountId) total -= t.amount;
+    if (t.kind === "transfer") {
+      if (t.fromId === accountId) total -= t.amount;
+      if (t.toId === accountId) total += t.amount;
+    }
+  }
+  return round(total);
+}
+
+function totalBalance() {
+  return round(data.accounts.reduce((s, a) => s + balance(a.id), 0));
+}
+
+function reserved(id) {
+  return round(data.reserves
+    .filter(r => r.projectId === id)
+    .reduce((s, r) => s + r.amount, 0));
+}
+
+function reservedTotal() {
+  return round(data.projects.reduce((s, p) => s + reserved(p.id), 0));
+}
+
+function freeBalance() {
+  return round(totalBalance() - reservedTotal());
+}
+
+function accountName(id) {
+  return data.accounts.find(a => a.id === id)?.name || "Compte supprimé";
+}
+
+function accountOptions() {
+  return data.accounts.map(a =>
+    `<option value="${esc(a.id)}">${esc(a.name)} (${money(balance(a.id))})</option>`
+  ).join("");
+}
+
+function monthTransactions() {
+  return data.transactions.filter(t => t.date.startsWith(selectedMonth));
+}
+
+function monthSum(kind) {
+  return round(monthTransactions().filter(t => t.kind === kind)
+    .reduce((s,t) => s + t.amount, 0));
+}
+
+function expenseByCategory(id) {
+  return round(monthTransactions()
+    .filter(t => t.kind === "expense" && t.category === id)
+    .reduce((s,t) => s + t.amount, 0));
+}
+
+function monthPicker() {
+  return `<input type="month" id="monthPicker" value="${selectedMonth}" style="max-width:180px">`;
+}
+
+function accountSummary() {
+  return data.accounts.map(a => `
+    <div class="row entry">
+      <span>${esc(a.name)}</span>
+      <strong>${money(balance(a.id))}</strong>
+    </div>`).join("");
+}
+
+function home() {
+  const income = monthSum("income");
+  const expense = monthSum("expense");
+  const recent = [...data.transactions]
+    .sort((a,b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id))
+    .slice(0, 5);
+
+  return `
+    <div class="row">
+      <h2>Vue d'ensemble</h2>
+      ${monthPicker()}
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">Argent total</div>
+        <div class="number">${money(totalBalance())}</div>
+        <div class="small">Tous tes comptes</div>
+      </div>
+      <div class="card">
+        <div class="label">Disponible hors projets</div>
+        <div class="number">${money(freeBalance())}</div>
+        <div class="small">Sans l'argent réservé</div>
+      </div>
+      <div class="card">
+        <div class="label">Réservé aux projets</div>
+        <div class="number">${money(reservedTotal())}</div>
+        <div class="small">Inclus dans ton solde total</div>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <div class="label">Revenus du mois</div>
+        <div class="number positive">+ ${money(income)}</div>
+      </div>
+      <div class="card">
+        <div class="label">Dépenses du mois</div>
+        <div class="number negative">− ${money(expense)}</div>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <section class="card">
+        <h3>Mes comptes</h3>
+        ${accountSummary()}
+      </section>
+
+      <section class="card">
+        <h3>Dernières opérations</h3>
+        ${recent.length ? recent.map(txRow).join("")
+          : '<p class="small">Aucune opération enregistrée.</p>'}
+        <div class="actions">
+          <button class="primary" data-tab="operations">+ Ajouter</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="card">
+      <h3>Mes projets</h3>
+      ${data.projects.length ? data.projects.map(p => {
+        const saved = reserved(p.id);
+        return `
+          <div class="entry">
+            <div class="row">
+              <strong>${esc(p.name)}</strong>
+              <span>${money(saved)} / ${money(p.target)}</span>
+            </div>
+            <div class="bar"><div class="fill" style="width:${Math.min(100,100*saved/p.target)}%"></div></div>
+          </div>`;
+      }).join("") : '<p class="small">Ajoute ton premier projet, comme ton permis.</p>'}
+      <div class="actions">
+        <button class="secondary" data-tab="projects">Voir mes projets</button>
+      </div>
+    </section>`;
+}
+
+function txRow(t) {
+  const transfer = t.kind === "transfer";
+  const incoming = t.kind === "income";
+  const title = transfer ? "Transfert" :
+    incoming ? "Revenu" : categories[t.category] || "Dépense";
+  const detail = transfer
+    ? `${accountName(t.fromId)} → ${accountName(t.toId)}`
+    : accountName(t.accountId);
+  return `
+    <div class="entry row">
+      <div>
+        <strong>${esc(t.description || title)}</strong>
+        <div class="small">${esc(title)} · ${esc(detail)} · ${esc(t.date)}</div>
+      </div>
+      <strong class="${incoming ? "positive" : transfer ? "" : "negative"}">
+        ${incoming ? "+" : transfer ? "" : "−"} ${money(t.amount)}
+      </strong>
+    </div>`;
+}
+
+function operations() {
+  const items = [...monthTransactions()]
+    .sort((a,b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+  const isTransfer = operationKind === "transfer";
+  const isExpense = operationKind === "expense";
+
+  return `
+    <h2>Opérations</h2>
+    <section class="card">
+      <h3>Ajouter une opération</h3>
+      <form id="operationForm">
+        <div class="field">
+          <label>Type</label>
+          <select id="kindSelector">
+            <option value="expense" ${isExpense ? "selected":""}>Dépense</option>
+            <option value="income" ${operationKind === "income" ? "selected":""}>Revenu</option>
+            <option value="transfer" ${isTransfer ? "selected":""}>Transfert entre comptes</option>
+          </select>
+        </div>
+        <div class="formgrid">
+          <div class="field">
+            <label>Montant (CHF)</label>
+            <input name="amount" type="number" min="0.01" step="0.01" required>
+          </div>
+          <div class="field">
+            <label>Date</label>
+            <input name="date" type="date" value="${localDate()}" required>
+          </div>
+          ${isTransfer ? `
+          <div class="field">
+            <label>Compte de départ</label>
+            <select name="fromId">${accountOptions()}</select>
+          </div>
+          <div class="field">
+            <label>Compte d'arrivée</label>
+            <select name="toId">${accountOptions()}</select>
+          </div>` : `
+          <div class="field">
+            <label>Compte</label>
+            <select name="accountId">${accountOptions()}</select>
+          </div>
+          ${isExpense ? `
+          <div class="field">
+            <label>Catégorie</label>
+            <select name="category">
+              ${Object.entries(categories).map(([id,name]) =>
+                `<option value="${id}">${name}</option>`).join("")}
+            </select>
+          </div>` : ""}`}
+        </div>
+        <div class="field">
+          <label>Description (facultative)</label>
+          <input name="description" maxlength="100" placeholder="Ex. Petit job, restaurant...">
+        </div>
+        ${operationKind === "income" ?
+          '<p class="small">Si tes projets ont un pourcentage défini, une répartition te sera proposée.</p>' : ""}
+        <button class="primary" type="submit">Enregistrer</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <h3>Historique</h3>
+        ${monthPicker()}
+      </div>
+      ${items.length ? items.map(t => `
+        <div class="row entry">
+          <div style="flex:1">${txRow(t)}</div>
+          <button class="danger" data-delete-tx="${esc(t.id)}">×</button>
+        </div>`).join("") :
+        '<p class="small">Aucune opération pour ce mois.</p>'}
+    </section>`;
+}
+
+function budgets() {
+  return `
+    <div class="row"><h2>Budgets mensuels</h2>${monthPicker()}</div>
+    <section class="card">
+      <p class="small">Fixe une limite pour chaque catégorie. Laisse vide si tu ne souhaites pas de limite.</p>
+      <form id="budgetForm">
+        ${Object.entries(categories).map(([id,name]) => {
+          const spent = expenseByCategory(id);
+          const limit = Number(data.budgets[id]) || 0;
+          const pct = limit > 0 ? Math.min(100, spent/limit*100) : 0;
+          return `
+            <div class="entry">
+              <div class="row">
+                <strong>${name}</strong>
+                <span class="small">Dépensé : ${money(spent)}</span>
+              </div>
+              ${limit ? `
+                <div class="bar">
+                  <div class="fill" style="width:${pct}%;background:${spent>limit?"var(--red)":"var(--blue)"}"></div>
+                </div>
+                <div class="small">${spent>limit ? "Dépassement : "+money(spent-limit) :
+                  "Reste : "+money(limit-spent)}</div>` : ""}
+              <div style="max-width:240px;margin-top:10px">
+                <label>Limite en CHF</label>
+                <input name="budget_${id}" type="number" min="0" step="0.01"
+                  placeholder="Pas de limite" value="${limit || ""}">
+              </div>
+            </div>`;
+        }).join("")}
+        <div class="actions">
+          <button class="primary" type="submit">Sauvegarder les budgets</button>
+        </div>
+      </form>
+    </section>`;
+}
+
+function projectedTime(p) {
+  const remaining = Math.max(0, round(p.target - reserved(p.id)));
+  if (remaining === 0) return "Objectif atteint.";
+  if (p.rate <= 0) return "Aucune contribution automatique définie.";
+
+  const monthly = Number(data.monthlyEstimate) || 0;
+  const incomes = data.transactions.filter(t => t.kind === "income").slice(-5);
+  let explanation = "";
+
+  if (incomes.length) {
+    const average = incomes.reduce((s,t) => s+t.amount,0)/incomes.length;
+    const contribution = round(average*p.rate/100);
+    if (contribution > 0) {
+      explanation = `Environ ${Math.ceil(remaining/contribution)} revenus similaires à tes derniers revenus.`;
+    }
+  }
+
+  if (monthly > 0) {
+    const monthlySaving = round(monthly*p.rate/100);
+    if (monthlySaving > 0) {
+      explanation += ` Estimation : ${Math.ceil(remaining/monthlySaving)} mois avec un revenu moyen de ${money(monthly)} par mois.`;
+    }
+  }
+
+  return explanation || "Ajoute des revenus ou une estimation mensuelle pour obtenir une prévision.";
+}
+
+function projects() {
+  const usedRate = data.projects.reduce((s,p) => s+p.rate,0);
+  return `
+    <h2>Projets & envies</h2>
+    <div class="notice" style="margin-bottom:16px">
+      L'argent réservé reste dans tes comptes. Il est simplement exclu de ton argent libre.
+      Le pourcentage est appliqué à chaque nouveau revenu si tu confirmes la proposition.
+    </div>
+    <section class="card">
+      <h3>Créer un projet</h3>
+      <form id="projectForm">
+        <div class="formgrid">
+          <div class="field">
+            <label>Nom du projet</label>
+            <input name="name" maxlength="70" placeholder="Ex. Permis de conduire" required>
+          </div>
+          <div class="field">
+            <label>Montant cible (CHF)</label>
+            <input name="target" type="number" min="0.01" step="0.01" required>
+          </div>
+          <div class="field">
+            <label>Pourcentage proposé sur chaque revenu</label>
+            <input name="rate" type="number" min="0" max="100" step="0.1"
+              value="${data.projects.length ? 0 : 20}" required>
+          </div>
+          <div class="field">
+            <label>Date souhaitée (facultative)</label>
+            <input name="deadline" type="date">
+          </div>
+        </div>
+        <p class="small">Pourcentages déjà attribués : ${usedRate.toFixed(1)} %. Total maximum : 100 %.</p>
+        <button class="primary" type="submit">+ Créer le projet</button>
+      </form>
+    </section>
+
+    ${data.projects.length ? data.projects.map(p => {
+      const saved = reserved(p.id);
+      const remaining = Math.max(0, round(p.target-saved));
+      return `
+        <section class="card">
+          <div class="row">
+            <h3>${esc(p.name)}</h3>
+            <span class="pill">${p.rate}% par revenu</span>
+          </div>
+          <div class="row">
+            <strong>${money(saved)} économisés</strong>
+            <span class="small">Objectif : ${money(p.target)}</span>
+          </div>
+          <div class="bar">
+            <div class="fill" style="width:${Math.min(100,100*saved/p.target)}%"></div>
+          </div>
+          <p class="small">Reste : ${money(remaining)}
+            ${p.deadline ? " · Date souhaitée : "+esc(p.deadline) : ""}
+          </p>
+          <p>${esc(projectedTime(p))}</p>
+          <div class="actions">
+            <button class="primary" data-project-action="add" data-id="${esc(p.id)}">+ Réserver</button>
+            <button class="secondary" data-project-action="release" data-id="${esc(p.id)}">Libérer</button>
+            <button class="secondary" data-project-action="edit" data-id="${esc(p.id)}">Modifier</button>
+            <button class="danger" data-project-action="delete" data-id="${esc(p.id)}">Supprimer</button>
+          </div>
+        </section>`;
+    }).join("") : '<section class="card"><p>Aucun projet pour le moment.</p></section>'}
+    <p class="small">Pour payer un achat avec l'argent réservé, libère d'abord le montant du projet, puis enregistre la dépense. Le paiement ne doit pas être compté deux fois.</p>`;
+}
+
+function settings() {
+  return `
+    <h2>Paramètres</h2>
+
+    <section class="card">
+      <h3>Mes comptes</h3>
+      <p class="small">Définis le solde de départ de tes comptes. Il sert de base à tous les calculs.</p>
+      ${data.accounts.map(a => `
+        <div class="row entry">
+          <div>
+            <strong>${esc(a.name)}</strong>
+            <div class="small">Solde actuel : ${money(balance(a.id))}</div>
+            <div class="small">Solde initial : ${money(a.opening)}</div>
+          </div>
+          <button class="secondary" data-edit-account="${esc(a.id)}">Modifier</button>
+        </div>`).join("")}
+      <h3 style="margin-top:20px">Ajouter un compte</h3>
+      <form id="accountForm" class="formgrid">
+        <div>
+          <label>Nom</label>
+          <input name="name" maxlength="50" required placeholder="Ex. Deuxième compte">
+        </div>
+        <div>
+          <label>Solde initial (CHF)</label>
+          <input name="opening" type="number" step="0.01" value="0" required>
+        </div>
+        <button class="primary" type="submit">Ajouter</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Estimation des revenus</h3>
+      <p class="small">Facultatif. Si tes revenus sont irréguliers, indique une moyenne mensuelle approximative. Elle sert uniquement à estimer le temps nécessaire à tes projets.</p>
+      <form id="estimateForm">
+        <div class="field" style="max-width:260px">
+          <label>Revenu moyen estimé par mois (CHF)</label>
+          <input name="estimate" type="number" min="0" step="0.01"
+            value="${data.monthlyEstimate || 0}">
+        </div>
+        <button class="primary" type="submit">Enregistrer</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Sauvegardes</h3>
+      <p>Les données sont stockées dans ce navigateur. Elles ne sont pas synchronisées entre tes appareils.</p>
+      <div class="actions">
+        <button class="primary" id="exportBtn">Exporter une sauvegarde JSON</button>
+      </div>
+      <div class="field" style="margin-top:20px">
+        <label>Importer une sauvegarde JSON</label>
+        <input type="file" id="importFile" accept=".json,application/json">
+      </div>
+      <p class="small">Importer une sauvegarde remplace les données actuelles. Exporte-les avant toute restauration.</p>
+    </section>`;
+}
+
+function render() {
+  document.querySelectorAll(".tab").forEach(b =>
+    b.classList.toggle("active", b.dataset.tab === tab));
+  const views = {
+    home, operations, budgets, projects, settings
+  };
+  document.getElementById("app").innerHTML = views[tab]();
+}
+
+document.addEventListener("change", e => {
+  if (e.target.id === "kindSelector") {
+    operationKind = e.target.value;
+    render();
+  }
+  if (e.target.id === "monthPicker") {
+    selectedMonth = e.target.value;
+    render();
+  }
+});
+
+document.addEventListener("submit", e => {
+  e.preventDefault();
+  const form = e.target;
+  const f = new FormData(form);
+
+  if (form.id === "operationForm") {
+    const amount = round(num(f.get("amount")));
+    const date = f.get("date");
+    if (!(amount > 0) || !Number.isFinite(amount) || !date) return;
+
+    const t = {
+      id: uid(), kind: operationKind, amount, date,
+      description: String(f.get("description") || "").trim()
+    };
+
+    if (operationKind === "transfer") {
+      t.fromId = f.get("fromId");
+      t.toId = f.get("toId");
+      if (t.fromId === t.toId) {
+        alert("Choisis deux comptes différents.");
+        return;
+      }
+    } else {
+      t.accountId = f.get("accountId");
+      if (operationKind === "expense") t.category = f.get("category");
+    }
+
+    data.transactions.push(t);
+
+    if (operationKind === "income") {
+      const proposals = data.projects.map(p => ({
+        project: p,
+        amount: Math.min(
+          round(amount*p.rate/100),
+          Math.max(0,round(p.target-reserved(p.id)))
+        )
+      })).filter(x => x.amount > 0);
+
+      if (proposals.length) {
+        const message = proposals.map(x =>
+          `${x.project.name} : ${money(x.amount)}`
+        ).join("\n");
+
+        if (confirm("Réserver une partie de ce revenu ?\n\n" + message)) {
+          for (const x of proposals) {
+            data.reserves.push({
+              id: uid(), projectId: x.project.id,
+              amount: x.amount, date, sourceTx: t.id
+            });
+          }
+        }
+      }
+    }
+
+    save();
+  }
+
+  if (form.id === "budgetForm") {
+    for (const id of Object.keys(categories)) {
+      const value = num(f.get("budget_"+id) || 0);
+      if (!Number.isFinite(value) || value < 0) {
+        alert("Montant de budget invalide.");
+        return;
+      }
+      data.budgets[id] = round(value);
+    }
+    save();
+  }
+
+  if (form.id === "projectForm") {
+    const name = String(f.get("name") || "").trim();
+    const target = round(num(f.get("target")));
+    const rate = num(f.get("rate"));
+    const existing = data.projects.reduce((s,p) => s+p.rate,0);
+
+    if (!name || !(target > 0) || !Number.isFinite(target)
+        || !Number.isFinite(rate) || rate < 0 || existing+rate > 100.0001) {
+      alert("Vérifie le montant et les pourcentages. Leur somme ne peut pas dépasser 100 %.");
+      return;
+    }
+    data.projects.push({
+      id: uid(), name, target, rate,
+      deadline: String(f.get("deadline") || "")
+    });
+    save();
+  }
+
+  if (form.id === "accountForm") {
+    const name = String(f.get("name") || "").trim();
+    const opening = round(num(f.get("opening")));
+    if (!name || !Number.isFinite(opening)) return;
+    data.accounts.push({ id: uid(), name, opening });
+    save();
+  }
+
+  if (form.id === "estimateForm") {
+    const n = num(f.get("estimate"));
+    if (!Number.isFinite(n) || n < 0) return;
+    data.monthlyEstimate = round(n);
+    save();
+  }
+});
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+
+  if (b.dataset.tab) {
+    tab = b.dataset.tab;
+    render();
+    window.scrollTo(0,0);
+    return;
+  }
+
+  if (b.dataset.deleteTx) {
+    const id = b.dataset.deleteTx;
+    if (!confirm("Supprimer cette opération ? Les réservations automatiques liées seront également retirées.")) return;
+    data.transactions = data.transactions.filter(t => t.id !== id);
+    data.reserves = data.reserves.filter(r => r.sourceTx !== id);
+    save();
+    return;
+  }
+
+  if (b.dataset.editAccount) {
+    const a = data.accounts.find(x => x.id === b.dataset.editAccount);
+    if (!a) return;
+    const value = prompt("Nouveau solde INITIAL pour "+a.name, a.opening);
+    if (value === null) return;
+    const n = num(value);
+    if (!Number.isFinite(n)) return alert("Montant invalide.");
+    a.opening = round(n);
+    save();
+    return;
+  }
+
+  if (b.dataset.projectAction) {
+    const p = data.projects.find(x => x.id === b.dataset.id);
+    if (!p) return;
+    const action = b.dataset.projectAction;
+
+    if (action === "add" || action === "release") {
+      const current = reserved(p.id);
+      const text = action === "add" ?
+        "Combien veux-tu réserver pour "+p.name+" ?" :
+        "Combien veux-tu libérer de "+p.name+" ?";
+      const entered = prompt(text, "20");
+      if (entered === null) return;
+      const amount = round(num(entered));
+      if (!Number.isFinite(amount) || amount <= 0)
+        return alert("Montant invalide.");
+      if (action === "add" && amount > freeBalance()+0.001)
+        return alert("Tu n'as pas assez d'argent non réservé.");
+      if (action === "release" && amount > current+0.001)
+        return alert("Tu ne peux pas libérer plus que le montant réservé.");
+
+      data.reserves.push({
+        id: uid(), projectId:p.id,
+        amount:action==="add"?amount:-amount,
+        date:localDate()
+      });
+      save();
+    }
+
+    if (action === "edit") {
+      const name = prompt("Nom du projet",p.name);
+      if (name === null) return;
+      const targetText = prompt("Montant cible (CHF)",p.target);
+      if (targetText === null) return;
+      const rateText = prompt("Pourcentage de chaque revenu",p.rate);
+      if (rateText === null) return;
+      const target = round(num(targetText));
+      const rate = num(rateText);
+      const others = data.projects.filter(x => x.id !== p.id)
+        .reduce((s,x) => s+x.rate,0);
+      if (!name.trim() || !(target>0) || !Number.isFinite(target)
+        || !Number.isFinite(rate) || rate<0 || others+rate>100.0001)
+        return alert("Valeurs invalides ou total des pourcentages supérieur à 100 %.");
+      p.name = name.trim();
+      p.target = target;
+      p.rate = rate;
+      save();
+    }
+
+    if (action === "delete") {
+      if (Math.abs(reserved(p.id)) > 0.001)
+        return alert("Libère d'abord tout l'argent réservé à ce projet.");
+      if (!confirm("Supprimer le projet "+p.name+" ?")) return;
+      data.projects = data.projects.filter(x => x.id !== p.id);
+      data.reserves = data.reserves.filter(r => r.projectId !== p.id);
+      save();
+    }
+    return;
+  }
+
+  if (b.id === "exportBtn") {
+    const blob = new Blob([JSON.stringify(data,null,2)],{
+      type:"application/json"
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "mon-argent-"+localDate()+".json";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url),1000);
+  }
+});
+
+document.addEventListener("change", async e => {
+  if (e.target.id !== "importFile") return;
+  const file = e.target.files?.[0];
+  if (!file) return;
+  try {
+    const imported = JSON.parse(await file.text());
+    if (!validData(imported)) throw Error("Format incorrect");
+    if (!confirm("Remplacer toutes les données actuelles par cette sauvegarde ?")) return;
+    data = imported;
+    save();
+    alert("Sauvegarde importée.");
+  } catch {
+    alert("Impossible de lire ce fichier de sauvegarde.");
+  }
+});
+
+render();
+</script>
+</body>
 </html>

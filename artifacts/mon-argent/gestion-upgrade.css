@@ -1,0 +1,117 @@
+/* Ajouts sans modification des styles existants */
+
+.ga-month {
+  display: inline-block !important;
+  position: relative !important;
+  width: min(182px,48vw) !important;
+  height: 44px !important;
+  min-width: 0 !important;
+  flex-shrink: 0;
+  margin: 0 !important;
+  vertical-align: middle;
+}
+
+.ga-month-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #0d1011;
+  border: 1px solid #354042;
+  border-radius: 10px;
+  color: var(--text,#f4f6f5);
+  font-size: 15.5px;
+  padding: 0 5px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ga-month .ga-month-native {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+  z-index: 1;
+}
+
+.ga-month:focus-within .ga-month-label {
+  outline: 2px solid var(--green,#39c98b);
+  outline-offset: 2px;
+}
+
+.ga-alert-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border,#293032);
+}
+
+.ga-alert-row:last-child {
+  border-bottom: 0;
+}
+
+.ga-green { color: var(--green,#39c98b); }
+.ga-red { color: var(--red,#f16a72); }
+
+.ga-comparison {
+  margin: 0 0 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border,#293032);
+  border-radius: 12px;
+  background: var(--card,#141819);
+  font-size: 13px;
+}
+
+.ga-project-progress {
+  font-size: 13px;
+  color: var(--text,#f4f6f5);
+  padding: 10px 12px;
+  margin: 12px 0;
+  background: var(--card2,#1b2021);
+  border-radius: 10px;
+}
+
+#ga-undo {
+  position: fixed;
+  z-index: 9999;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(440px,calc(100vw - 28px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--green,#39c98b);
+  border-radius: 12px;
+  background: var(--card2,#1b2021);
+  color: var(--text,#f4f6f5);
+  box-shadow: 0 10px 35px #0008;
+}
+
+#ga-csv {
+  margin: 0 0 13px;
+}
+
+@media(max-width:380px) {
+  .ga-month {
+    width: min(166px,46vw) !important;
+  }
+
+  .ga-month-label {
+    font-size: 14.5px;
+  }
+}

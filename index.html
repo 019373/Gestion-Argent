@@ -6,34 +6,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#090b0c">
 <title>Gestion-Argent</title>
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090b0c'/%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M14 43 27 32 36 37 50 20m-10 0h10v10' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
 <style>
 :root {
   color-scheme: dark;
   --bg: #090b0c;
   --card: #141819;
-  --card2: #1b2021;
-  --border: #293032;
+  --card2: #1c2223;
+  --border: #2a3435;
   --text: #f4f6f5;
-  --muted: #929d9b;
+  --muted: #9ba7a5;
   --green: #39c98b;
   --red: #f16a72;
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font: 14px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
 }
+
 button, input, select { font: inherit; }
 button { cursor: pointer; }
 button:disabled { opacity: .45; cursor: not-allowed; }
+
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
+
 header {
   position: sticky;
   top: 0;
@@ -42,90 +51,119 @@ header {
   border-bottom: 1px solid var(--border);
   z-index: 3;
 }
+
 .head {
   max-width: 1110px;
   margin: auto;
-  padding: 16px 22px;
+  padding: 15px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .brand {
-  font-size: 20px;
-  letter-spacing: -.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
   font-weight: 800;
+  letter-spacing: -.5px;
 }
-.brand i {
-  color: var(--green);
-  font-style: normal;
+
+.brand-logo {
+  width: 35px;
+  height: 35px;
+  flex: none;
 }
+
 .head button { display: none; }
+
 .layout {
   max-width: 1110px;
   margin: auto;
   display: grid;
-  grid-template-columns: 192px minmax(0, 1fr);
-  gap: 30px;
-  padding: 30px 22px 90px;
+  grid-template-columns: 195px minmax(0, 1fr);
+  gap: 29px;
+  padding: 29px 22px 90px;
 }
+
 nav {
   display: flex;
   flex-direction: column;
   gap: 5px;
   position: sticky;
-  top: 92px;
+  top: 90px;
   align-self: start;
 }
+
 nav button {
   display: flex;
-  gap: 11px;
   align-items: center;
+  gap: 11px;
   background: transparent;
   border: 0;
   color: var(--muted);
   border-radius: 12px;
   text-align: left;
-  padding: 13px;
+  padding: 12px;
   font-weight: 600;
 }
+
 nav button.active {
-  background: #18342b;
+  background: #163328;
   color: var(--green);
 }
+
 .icon {
   display: inline-block;
-  vertical-align: middle;
-  flex-shrink: 0;
   width: 20px;
   height: 20px;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
+
 main { min-width: 0; }
+
 h1 {
   font-size: 27px;
-  letter-spacing: -.8px;
+  letter-spacing: -.7px;
   margin: 0;
 }
-h2 { font-size: 16px; margin: 0 0 16px; }
+
+h2 { font-size: 16px; margin: 0 0 15px; }
 h3 { font-size: 14px; margin: 0 0 8px; }
-p { margin: 8px 0 14px; color: var(--muted); }
-.caption { color: var(--muted); font-size: 12px; }
+
+p {
+  color: var(--muted);
+  margin: 8px 0 14px;
+  line-height: 1.6;
+}
+
+.caption {
+  font-size: 12px;
+  color: var(--muted);
+}
+
 .toprow {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin: 0 0 23px;
+  margin-bottom: 23px;
 }
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
+
 .cols {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
+
 .card {
   padding: 20px;
   background: var(--card);
@@ -134,33 +172,43 @@ p { margin: 8px 0 14px; color: var(--muted); }
   margin-bottom: 14px;
   min-width: 0;
 }
-.card.main-card {
-  background: linear-gradient(130deg, #163d30, #13231f 80%);
-  border-color: #24523f;
+
+.main-card {
+  background: linear-gradient(135deg, #153c2f, #13231e 85%);
+  border-color: #285340;
 }
+
 .metric {
   font-size: 27px;
   font-weight: 800;
   letter-spacing: -.6px;
-  margin-top: 7px;
+  margin-top: 6px;
   overflow-wrap: anywhere;
 }
+
 .green { color: var(--green); }
 .red { color: var(--red); }
 .muted { color: var(--muted); }
+
 .line {
   border-bottom: 1px solid var(--border);
   padding: 12px 0;
 }
+
 .line:last-child { border: 0; }
+
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
-.min0 { min-width: 0; }
-.truncate { overflow-wrap: anywhere; }
+
+.min0 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .btn {
   border: 1px solid var(--border);
   background: var(--card2);
@@ -170,65 +218,104 @@ p { margin: 8px 0 14px; color: var(--muted); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 7px;
   font-weight: 600;
+  text-align: center;
 }
-.btn.green-btn {
+
+.btn-primary {
   background: var(--green);
-  color: #062215;
   border-color: var(--green);
+  color: #052316;
 }
-.btn.red-btn { color: var(--red); }
-.btn.small { padding: 6px 9px; font-size: 12px; }
+
+.btn-red { color: var(--red); }
+
+.btn-small {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
 .buttons {
   display: flex;
-  flex-wrap: wrap;
   gap: 7px;
+  flex-wrap: wrap;
   margin-top: 13px;
 }
+
 .formgrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  margin-bottom: 14px;
 }
+
 .field { min-width: 0; }
+
 .field label {
   display: block;
   color: var(--muted);
   font-size: 12px;
-  margin: 0 0 5px;
+  margin-bottom: 5px;
 }
+
+/* Champs uniformes et prévention du zoom Safari */
 input, select {
+  display: block;
   width: 100%;
   min-width: 0;
+  height: 46px;
+  min-height: 46px;
+  padding: 10px 11px;
+  line-height: normal;
+  font-size: 16px;
   color: var(--text);
   background: #0d1011;
   border: 1px solid #354042;
   border-radius: 10px;
-  padding: 11px;
-  min-height: 43px;
+  box-sizing: border-box;
 }
+
+input[type="date"],
+input[type="month"] {
+  display: block;
+  height: 46px;
+  min-height: 46px;
+  padding: 10px 11px;
+  border-radius: 10px;
+}
+
+input[type="date"]::-webkit-date-and-time-value,
+input[type="month"]::-webkit-date-and-time-value {
+  text-align: left;
+  min-height: 22px;
+}
+
 input[type="month"] { max-width: 170px; }
-.bar-track {
+
+.track {
   height: 8px;
   background: #303838;
   border-radius: 99px;
   overflow: hidden;
   margin: 9px 0;
 }
-.bar-fill {
+
+.fill {
   height: 100%;
   background: var(--green);
   border-radius: 99px;
 }
+
 .tag {
   font-size: 11px;
   color: var(--green);
   background: #1a352a;
-  border-radius: 20px;
   padding: 5px 9px;
+  border-radius: 99px;
   white-space: nowrap;
 }
+
 .notice {
   padding: 13px 15px;
   background: #14241e;
@@ -238,6 +325,7 @@ input[type="month"] { max-width: 170px; }
   margin-bottom: 14px;
   font-size: 13px;
 }
+
 .graph {
   height: 160px;
   display: flex;
@@ -246,6 +334,7 @@ input[type="month"] { max-width: 170px; }
   margin: 20px 0 29px;
   border-bottom: 1px solid var(--border);
 }
+
 .bar-group {
   position: relative;
   display: flex;
@@ -255,36 +344,104 @@ input[type="month"] { max-width: 170px; }
   flex: 1;
   height: 100%;
 }
+
 .chartbar {
   width: 32%;
   min-width: 6px;
   border-radius: 5px 5px 0 0;
 }
+
 .bar-label {
   position: absolute;
   top: calc(100% + 6px);
   font-size: 10px;
   color: var(--muted);
 }
+
 .legend {
   font-size: 12px;
   color: var(--muted);
   margin-top: 7px;
 }
-.empty { color: var(--muted); padding: 8px 0; }
+
+.empty {
+  color: var(--muted);
+  padding: 10px 0;
+}
+
 .bottomnav { display: none; }
 
+/* Règle budgétaire */
+.allocation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.allocation > div {
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card2);
+}
+
+.allocation strong {
+  display: block;
+  font-size: 19px;
+  margin: 5px 0;
+}
+
+.distribution {
+  display: flex;
+  overflow: hidden;
+  border-radius: 99px;
+  height: 11px;
+  margin: 18px 0;
+}
+
+.distribution > div { height: 100%; }
+
+.section-sep {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+.section-number {
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+
+.read-only {
+  border-left: 3px solid var(--green);
+  padding: 10px 13px;
+  background: var(--card2);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+/* Téléphone */
 @media(max-width:780px) {
   .layout {
     grid-template-columns: 1fr;
-    padding: 19px 14px 100px;
+    padding: 18px 14px 110px;
   }
-  .layout>nav { display: none; }
-  .head { padding: 14px; }
+
+  .layout > nav { display: none; }
+  .head { padding: 12px 14px; }
   .head button { display: inline-flex; }
-  .cards { grid-template-columns: 1fr 1fr; }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .cards .main-card { grid-column: span 2; }
   .cols { grid-template-columns: 1fr; }
+
   .bottomnav {
     display: flex;
     position: fixed;
@@ -297,6 +454,7 @@ input[type="month"] { max-width: 170px; }
     padding: 7px 3px max(9px, env(safe-area-inset-bottom));
     justify-content: space-around;
   }
+
   .bottomnav button {
     background: transparent;
     color: var(--muted);
@@ -306,187 +464,327 @@ input[type="month"] { max-width: 170px; }
     align-items: center;
     gap: 2px;
     font-size: 10px;
-    min-width: 0;
     padding: 4px;
+    min-width: 0;
   }
+
   .bottomnav button.active { color: var(--green); }
-  .bottomnav .icon { width: 22px; height: 22px; }
+
+  .bottomnav .icon {
+    width: 22px;
+    height: 22px;
+  }
+
   h1 { font-size: 24px; }
 }
+
 @media(max-width:460px) {
   .formgrid { grid-template-columns: 1fr; }
   .card { padding: 16px; }
   .metric { font-size: 22px; }
-  .toprow { align-items: start; }
-  .toprow input { max-width: 140px; }
+  .toprow { align-items: flex-start; }
+  .toprow input { max-width: 143px; }
   .brand { font-size: 18px; }
+  .allocation { grid-template-columns: 1fr; }
 }
 </style>
 </head>
+
 <body>
 <div id="app"></div>
+
 <script>
+/* ==============================
+   DONNÉES ET CONFIGURATION
+============================== */
+
 const STORE = 'gestion-argent-v2';
 const LEGACY = 'monargent-v1';
 
 const CATS = {
-  food:'Nourriture',
-  outings:'Sorties',
-  transport:'Transport',
-  shopping:'Shopping',
-  sport:'Sport',
-  projects:'Achats / projets',
-  other:'Autres'
+  food: 'Nourriture',
+  outings: 'Sorties',
+  transport: 'Transport',
+  shopping: 'Shopping',
+  sport: 'Sport',
+  projects: 'Achats / projets',
+  other: 'Autres'
 };
 
 const NAV = [
-  ['home','home','Accueil'],
-  ['operations','receipt','Opérations'],
-  ['budgets','chart','Budgets'],
-  ['projects','target','Projets'],
-  ['recurring','repeat','Récurrents'],
-  ['settings','settings','Paramètres']
+  ['home', 'home', 'Accueil'],
+  ['operations', 'receipt', 'Opérations'],
+  ['budgets', 'chart', 'Budgets'],
+  ['projects', 'target', 'Projets'],
+  ['recurring', 'repeat', 'Récurrents'],
+  ['settings', 'settings', 'Paramètres']
 ];
 
+/* Icônes SVG */
+
 const ICONS = {
-  home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-7h6v7"/>',
-  receipt:'<path d="M4 3h16v18l-4-2-4 2-4-2-4 2V3z"/><path d="M8 8h8M8 12h8M8 16h4"/>',
-  chart:'<path d="M4 20V10M10 20V4M16 20v-8M22 20V7"/>',
-  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
-  repeat:'<path d="M20 7h-12a4 4 0 0 0-4 4v1M4 7l4-4m-4 4 4 4M4 17h12a4 4 0 0 0 4-4v-1m0 5-4 4m4-4-4-4"/>',
-  settings:'<circle cx="12" cy="12" r="3"/><path d="M10 2h4l.7 2.5 2 .9 2.3-1.1 2.5 3-1.5 2 .4 2.2 2 1.5-1 3.6-2.5.2-1.4 1.6.2 2.5-3.7 1.1-1.5-2-2.2-.3-2 1.5-3.2-2.4 1.1-2.3-.8-2-2.5-.7V10l2.5-.7.8-2L5.1 5l3.2-2.4 2 1.5L10 2z"/>',
-  plus:'<path d="M12 5v14M5 12h14"/>',
-  down:'<path d="M12 4v16m-6-6 6 6 6-6"/>',
-  up:'<path d="M12 20V4m-6 6 6-6 6 6"/>',
-  wallet:'<rect x="2" y="5" width="20" height="15" rx="3"/><path d="M2 9h20M17 15h1"/>',
-  transfer:'<path d="M4 8h16m-5-4 5 4-5 4M20 16H4m5-4-5 4 5 4"/>',
-  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>'
+  home:
+    '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>' +
+    '<path d="M9 21v-7h6v7"/>',
+
+  receipt:
+    '<path d="M4 3h16v18l-4-2-4 2-4-2-4 2V3z"/>' +
+    '<path d="M8 8h8M8 12h8M8 16h4"/>',
+
+  chart:
+    '<path d="M4 20V10M10 20V4M16 20v-8M22 20V7"/>',
+
+  target:
+    '<circle cx="12" cy="12" r="9"/>' +
+    '<circle cx="12" cy="12" r="5"/>' +
+    '<circle cx="12" cy="12" r="1"/>',
+
+  repeat:
+    '<path d="M4 9V7a3 3 0 0 1 3-3h13"/>' +
+    '<path d="m16 1 4 3-4 3"/>' +
+    '<path d="M20 15v2a3 3 0 0 1-3 3H4"/>' +
+    '<path d="m8 17-4 3 4 3"/>',
+
+  settings:
+    '<path d="M12 3a2 2 0 0 1 2 2l1 1 2-.2 1.8 2-1 2 .3 2 1.9 1v3l-2 1-.4 2 1 1.9-2.1 2-2-.9-1.8.5-1 2h-3l-1-2-2-.5-2 .9-2-2 1-2-.5-1.8-2-1v-3l2-1 .5-2-1-2 2-2 2 .9 2-.4 1-2z"/>' +
+    '<circle cx="12" cy="13" r="3"/>',
+
+  plus:
+    '<path d="M12 5v14M5 12h14"/>',
+
+  down:
+    '<path d="M12 4v16m-6-6 6 6 6-6"/>',
+
+  up:
+    '<path d="M12 20V4m-6 6 6-6 6 6"/>',
+
+  back:
+    '<path d="m15 18-6-6 6-6"/>' +
+    '<path d="M9 12h12"/>',
+
+  info:
+    '<circle cx="12" cy="12" r="9"/>' +
+    '<path d="M12 11v5"/>' +
+    '<path d="M12 8h.01"/>'
 };
 
-function icon(k,size=20) {
-  return `<svg class="icon" width="${size}" height="${size}"
-    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    stroke-width="1.8" stroke-linecap="round"
-    stroke-linejoin="round" aria-hidden="true">
-    ${ICONS[k]||ICONS.wallet}</svg>`;
+function icon(k) {
+  return `
+    <svg class="icon" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true">
+      ${ICONS[k] || ICONS.home}
+    </svg>`;
 }
 
-const initial = () => ({
-  accounts:[
-    {id:'bank',name:'Compte bancaire',opening:0},
-    {id:'savings',name:'Épargne',opening:0}
-  ],
-  transactions:[],
-  projects:[],
-  reserves:[],
-  budgets:{},
-  recurring:[],
-  monthlyEstimate:0
-});
+function brandLogo() {
+  return `
+    <svg class="brand-logo" viewBox="0 0 64 64"
+      aria-hidden="true">
+      <rect width="64" height="64" rx="16"
+        fill="#090b0c"/>
+      <rect x="2" y="2" width="60" height="60"
+        rx="14" fill="none"
+        stroke="#ffffff" stroke-width="2"/>
+      <path d="M14 43 27 32 36 37 50 20m-10 0h10v10"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+    </svg>`;
+}
 
-const parse = s => {
+/* Répartition par défaut */
+
+function defaultRule() {
+  return {
+    needs: {
+      name: 'Besoins',
+      percent: 50,
+      description: 'Nourriture, transport et dépenses indispensables.'
+    },
+    wants: {
+      name: 'Envies',
+      percent: 30,
+      description: 'Sorties, loisirs et achats personnels.'
+    },
+    savings: {
+      name: 'Épargne',
+      percent: 20,
+      description: 'Projets et réserve pour les imprévus.'
+    }
+  };
+}
+
+function initial() {
+  return {
+    accounts: [
+      {id:'bank', name:'Compte bancaire', opening:0},
+      {id:'savings', name:'Épargne', opening:0}
+    ],
+    transactions: [],
+    projects: [],
+    reserves: [],
+    budgets: {},
+    recurring: [],
+    monthlyEstimate: 0,
+    allocationRule: defaultRule()
+  };
+}
+
+function parse(s) {
   try { return JSON.parse(s); }
   catch { return null; }
-};
+}
 
-function migrate(old) {
+/* Compatibilité avec les versions précédentes */
+
+function migrate(raw) {
   const d = initial();
 
-  if(!old || !Array.isArray(old.accounts)
-     || !Array.isArray(old.transactions)) return d;
+  if(!raw ||
+     !Array.isArray(raw.accounts) ||
+     !Array.isArray(raw.transactions)) {
+    return d;
+  }
 
-  for(const k of Object.keys(d))
-    if(old[k]!=null) d[k]=old[k];
+  for(const k of Object.keys(d)) {
+    if(raw[k] != null) d[k] = raw[k];
+  }
 
-  for(const k of ['projects','reserves','recurring'])
-    if(!Array.isArray(d[k])) d[k]=[];
+  for(const k of ['projects','reserves','recurring']) {
+    if(!Array.isArray(d[k])) d[k] = [];
+  }
 
-  if(!d.budgets || typeof d.budgets!=='object')
-    d.budgets={};
+  if(!d.budgets || typeof d.budgets !== 'object') {
+    d.budgets = {};
+  }
 
-  d.projects=d.projects.map(p=>({
+  const defaults = defaultRule();
+
+  for(const k of Object.keys(defaults)) {
+    d.allocationRule[k] = {
+      ...defaults[k],
+      ...(d.allocationRule?.[k] || {})
+    };
+  }
+
+  d.projects = d.projects.map(p => ({
     ...p,
-    ruleType:p.ruleType||'percent',
-    ruleValue:Number(p.ruleValue??p.rate??0)
+    ruleType: p.ruleType || 'percent',
+    ruleValue: Number(p.ruleValue ?? p.rate ?? 0)
   }));
 
-  // Regrouper l'ancien compte Espèces dans le compte bancaire.
-  const cash=d.accounts.filter(a=>
-    a.id==='cash'||a.name?.toLowerCase()==='espèces'
+  /* Ancien compte Espèces : intégré au compte bancaire */
+
+  const cash = d.accounts.filter(a =>
+    a.id === 'cash' ||
+    a.name?.toLowerCase() === 'espèces'
   );
 
   if(cash.length) {
-    let bank=d.accounts.find(a=>a.id==='bank')
-      || d.accounts.find(a=>!cash.includes(a));
+    let bank =
+      d.accounts.find(a => a.id === 'bank') ||
+      d.accounts.find(a => !cash.includes(a));
 
     if(!bank) {
-      bank={id:'bank',name:'Compte bancaire',opening:0};
+      bank = {
+        id:'bank',
+        name:'Compte bancaire',
+        opening:0
+      };
       d.accounts.push(bank);
     }
 
-    bank.opening=Number(bank.opening||0)
-      +cash.reduce((s,a)=>s+Number(a.opening||0),0);
+    bank.opening =
+      Number(bank.opening || 0) +
+      cash.reduce((s,a) => s + Number(a.opening || 0),0);
 
-    const cashIds=new Set(cash.map(a=>a.id));
+    const ids = new Set(cash.map(a => a.id));
 
     for(const t of d.transactions) {
-      for(const k of ['accountId','fromId','toId'])
-        if(cashIds.has(t[k])) t[k]=bank.id;
+      for(const key of ['accountId','fromId','toId']) {
+        if(ids.has(t[key])) t[key] = bank.id;
+      }
     }
 
-    for(const rule of d.recurring)
-      if(cashIds.has(rule.accountId))
-        rule.accountId=bank.id;
+    for(const r of d.recurring) {
+      if(ids.has(r.accountId)) {
+        r.accountId = bank.id;
+      }
+    }
 
-    d.accounts=d.accounts.filter(a=>!cashIds.has(a.id));
+    d.accounts = d.accounts.filter(a => !ids.has(a.id));
   }
 
-  if(!d.accounts.length) d.accounts=initial().accounts;
+  if(!d.accounts.length) {
+    d.accounts = initial().accounts;
+  }
+
   return d;
 }
 
-let data=migrate(
-  parse(localStorage.getItem(STORE))
-  ||parse(localStorage.getItem(LEGACY))
+let data = migrate(
+  parse(localStorage.getItem(STORE)) ||
+  parse(localStorage.getItem(LEGACY))
 );
 
-let page='home';
-let month=now().slice(0,7);
-let kind='expense';
-let editTx=null;
-let editProject=null;
-let editRecurring=null;
-let query='';
-let kindFilter='all';
+let page = 'home';
+let month = now().slice(0,7);
+let kind = 'expense';
+
+let editTx = null;
+let editProject = null;
+let editRecurring = null;
+
+let query = '';
+let kindFilter = 'all';
+let simAmount = 200;
 
 try {
-  localStorage.setItem(STORE,JSON.stringify(data));
+  localStorage.setItem(STORE, JSON.stringify(data));
 } catch {}
 
+/* ==============================
+   CALCULS
+============================== */
+
 function now() {
-  const x=new Date();
-  const p=n=>String(n).padStart(2,'0');
-  return `${x.getFullYear()}-${p(x.getMonth()+1)}-${p(x.getDate())}`;
+  const d = new Date();
+  const p = x => String(x).padStart(2,'0');
+
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
 }
 
 function uid() {
-  return crypto.randomUUID
-    ?crypto.randomUUID()
-    :Date.now()+'-'+Math.random();
+  return crypto.randomUUID?.() ||
+    Date.now() + '-' + Math.random();
 }
 
-const num=x=>Number(String(x??'').replace(',','.'));
-const round=x=>Math.round((x+Number.EPSILON)*100)/100;
-const money=x=>Number(x||0).toLocaleString('fr-CH',{
-  style:'currency',currency:'CHF'
-});
-const escapeHtml=x=>String(x??'').replace(/[&<>"']/g,c=>({
-  '&':'&amp;',
-  '<':'&lt;',
-  '>':'&gt;',
-  '"':'&quot;',
-  "'":'&#39;'
-}[c]));
+const num = x =>
+  Number(String(x ?? '').replace(',','.'));
+
+const round = x =>
+  Math.round((x + Number.EPSILON) * 100) / 100;
+
+const money = x =>
+  Number(x || 0).toLocaleString('fr-CH',{
+    style:'currency',
+    currency:'CHF'
+  });
+
+const esc = x =>
+  String(x ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c]));
 
 function save() {
   try {
@@ -497,167 +795,212 @@ function save() {
   render();
 }
 
-function balance(a) {
-  let amount=Number(
-    data.accounts.find(x=>x.id===a)?.opening||0
+function balance(id) {
+  let amount = Number(
+    data.accounts.find(a => a.id === id)?.opening || 0
   );
 
   for(const t of data.transactions) {
-    if(t.kind==='income'&&t.accountId===a)
-      amount+=t.amount;
+    if(t.kind === 'income' && t.accountId === id)
+      amount += t.amount;
 
-    if(t.kind==='expense'&&t.accountId===a)
-      amount-=t.amount;
+    if(t.kind === 'expense' && t.accountId === id)
+      amount -= t.amount;
 
-    if(t.kind==='transfer') {
-      if(t.fromId===a) amount-=t.amount;
-      if(t.toId===a) amount+=t.amount;
+    if(t.kind === 'transfer') {
+      if(t.fromId === id) amount -= t.amount;
+      if(t.toId === id) amount += t.amount;
     }
   }
 
   return round(amount);
 }
 
-const total=()=>round(
-  data.accounts.reduce((s,a)=>s+balance(a.id),0)
-);
+const total = () =>
+  round(data.accounts.reduce((s,a) => s + balance(a.id),0));
 
-const reserved=id=>round(
-  data.reserves.filter(x=>x.projectId===id)
-    .reduce((s,x)=>s+Number(x.amount),0)
-);
+const reserved = id =>
+  round(data.reserves
+    .filter(x => x.projectId === id)
+    .reduce((s,x) => s + Number(x.amount),0));
 
-const reservedTotal=()=>round(
-  data.projects.reduce((s,p)=>s+reserved(p.id),0)
-);
+const reservedTotal = () =>
+  round(data.projects.reduce((s,p) => s + reserved(p.id),0));
 
-const available=()=>round(total()-reservedTotal());
+const available = () =>
+  round(total() - reservedTotal());
 
-const accountName=id=>
-  data.accounts.find(a=>a.id===id)?.name||'Compte';
+const accName = id =>
+  data.accounts.find(a => a.id === id)?.name || 'Compte';
 
-const forMonth=(m=month)=>
-  data.transactions.filter(t=>t.date?.startsWith(m));
+const forMonth = (m=month) =>
+  data.transactions.filter(t => t.date?.startsWith(m));
 
-const sum=(type,m=month)=>round(
-  forMonth(m).filter(t=>t.kind===type)
-    .reduce((s,t)=>s+t.amount,0)
-);
+const sum = (kind,m=month) =>
+  round(forMonth(m)
+    .filter(t => t.kind === kind)
+    .reduce((s,t) => s + t.amount,0));
 
-const categorySum=(c,m=month)=>round(
-  forMonth(m)
-    .filter(t=>t.kind==='expense'&&t.category===c)
-    .reduce((s,t)=>s+t.amount,0)
-);
+const catSum = (c,m=month) =>
+  round(forMonth(m)
+    .filter(t => t.kind === 'expense' && t.category === c)
+    .reduce((s,t) => s + t.amount,0));
 
-const sortTx=(a,b)=>b.date.localeCompare(a.date)
-  ||String(b.id).localeCompare(String(a.id));
+const sortTx = (a,b) =>
+  b.date.localeCompare(a.date) ||
+  String(b.id).localeCompare(String(a.id));
 
-const opts=(arr,selected)=>arr.map(([id,label])=>`
-  <option value="${escapeHtml(id)}"
-    ${String(id)===String(selected)?'selected':''}>
-    ${escapeHtml(label)}
-  </option>`).join('');
+/* Formulaires */
 
-const accountOpts=selected=>opts(
-  data.accounts.map(a=>[a.id,a.name]),selected
-);
+const opts = (pairs,v) =>
+  pairs.map(([id,label]) => `
+    <option value="${esc(id)}"
+      ${String(id) === String(v) ? 'selected' : ''}>
+      ${esc(label)}
+    </option>`).join('');
 
-const field=(label,name,value='',type='text',extra='')=>`
+const field = (label,name,value='',type='text',extra='') => `
   <div class="field">
-    <label for="f_${name}">${escapeHtml(label)}</label>
-    <input id="f_${name}" name="${name}"
-      value="${escapeHtml(value)}" type="${type}" ${extra}>
+    <label for="f_${name}">${esc(label)}</label>
+    <input id="f_${name}" name="${esc(name)}"
+      type="${type}" value="${esc(value)}" ${extra}>
   </div>`;
 
-const select=(label,name,arr,selected)=>`
+const select = (label,name,pairs,v) => `
   <div class="field">
-    <label for="f_${name}">${escapeHtml(label)}</label>
-    <select id="f_${name}" name="${name}">
-      ${opts(arr,selected)}
+    <label for="f_${name}">${esc(label)}</label>
+    <select id="f_${name}" name="${esc(name)}">
+      ${opts(pairs,v)}
     </select>
   </div>`;
 
-function heading(name,description='',monthSelect=false) {
-  return `<div class="toprow">
-    <div>
-      <h1>${name}</h1>
-      <div class="caption">${description}</div>
-    </div>
-    ${monthSelect?`
-      <input id="month" type="month" value="${month}"
-        aria-label="Choisir un mois">`:''}
-  </div>`;
+function heading(title,desc='',showMonth=false) {
+  return `
+    <div class="toprow">
+      <div>
+        <h1>${title}</h1>
+        <div class="caption">${desc}</div>
+      </div>
+      ${showMonth ? `
+        <input id="month" type="month"
+          aria-label="Mois" value="${month}">
+      ` : ''}
+    </div>`;
 }
 
-function txRows(list,actions=false) {
-  if(!list.length)
-    return '<div class="empty">Aucune opération pour le moment.</div>';
+/* ==============================
+   LISTES
+============================== */
 
-  return list.map(t=>`
+function txRows(items,actions=false) {
+  if(!items.length) {
+    return '<div class="empty">Aucune opération pour le moment.</div>';
+  }
+
+  return items.map(t => `
     <div class="line row">
-      <div class="min0 truncate">
-        <strong>${escapeHtml(t.description||(
-          t.kind==='transfer'?'Transfert':
-          t.kind==='income'?'Revenu':
-          CATS[t.category]||'Dépense'
+      <div class="min0">
+        <strong>${esc(t.description || (
+          t.kind === 'transfer' ? 'Transfert' :
+          t.kind === 'income' ? 'Revenu' :
+          CATS[t.category] || 'Dépense'
         ))}</strong>
 
         <div class="caption">
-          ${escapeHtml(t.date)} ·
-          ${escapeHtml(
-            t.kind==='transfer'
-              ?accountName(t.fromId)+' → '+accountName(t.toId)
-              :accountName(t.accountId)
-          )}
+          ${esc(t.date)} ·
+          ${esc(t.kind === 'transfer'
+            ? accName(t.fromId)+' → '+accName(t.toId)
+            : accName(t.accountId))}
         </div>
 
-        ${actions?`
+        ${actions ? `
           <div class="buttons">
-            <button class="btn small"
-              data-edit-tx="${escapeHtml(t.id)}">Modifier</button>
-            <button class="btn small red-btn"
-              data-del-tx="${escapeHtml(t.id)}">Supprimer</button>
-            ${t.kind==='income'?`
-              <button class="btn small"
-                data-allocate="${escapeHtml(t.id)}">Répartir</button>
-            `:''}
-          </div>`:''}
+            <button class="btn btn-small"
+              data-edit-tx="${esc(t.id)}">Modifier</button>
+            <button class="btn btn-small btn-red"
+              data-del-tx="${esc(t.id)}">Supprimer</button>
+            ${t.kind === 'income' ? `
+              <button class="btn btn-small"
+                data-allocate="${esc(t.id)}">Répartir</button>
+            ` : ''}
+          </div>` : ''}
       </div>
 
       <strong class="${
-        t.kind==='expense'?'red':
-        t.kind==='income'?'green':''
+        t.kind === 'expense' ? 'red' :
+        t.kind === 'income' ? 'green' : ''
       }">
-        ${t.kind==='income'?'+':t.kind==='expense'?'−':''}
+        ${t.kind === 'income' ? '+' :
+          t.kind === 'expense' ? '−' : ''}
         ${money(t.amount)}
       </strong>
     </div>`).join('');
 }
 
-function accountRows() {
-  return data.accounts.map(a=>`
-    <div class="line row">
-      <span>${escapeHtml(a.name)}</span>
-      <strong>${money(balance(a.id))}</strong>
-    </div>`).join('');
+function projectRows(showDetails=false) {
+  if(!data.projects.length) {
+    return '<div class="empty">Aucun projet enregistré.</div>';
+  }
+
+  return data.projects.map(p => {
+    const saved = reserved(p.id);
+
+    return `
+      <div class="line">
+        <div class="row">
+          <strong>${esc(p.name)}</strong>
+          <span class="caption">
+            ${money(saved)} / ${money(p.target)}
+          </span>
+        </div>
+
+        <div class="track">
+          <div class="fill" style="width:${
+            Math.max(0,Math.min(100,saved/p.target*100))
+          }%"></div>
+        </div>
+
+        <div class="caption">
+          Encore ${money(Math.max(0,p.target-saved))}
+          ${showDetails ? `
+            · ${p.ruleType === 'fixed'
+              ? money(p.ruleValue)
+              : p.ruleValue+' %'} par revenu
+          ` : ''}
+        </div>
+      </div>`;
+  }).join('');
 }
 
+/* ==============================
+   ACCUEIL
+============================== */
+
 function home() {
-  const months=Array.from({length:6},(_,i)=>{
-    const d=new Date(
+  const months = Array.from({length:6},(_,i) => {
+    const d = new Date(
       +month.slice(0,4),
       +month.slice(5,7)-1+i-5,1
     );
-    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+
+    return `${d.getFullYear()}-${
+      String(d.getMonth()+1).padStart(2,'0')
+    }`;
   });
 
-  const max=Math.max(
-    1,...months.flatMap(m=>[sum('income',m),sum('expense',m)])
+  const max = Math.max(
+    1,
+    ...months.flatMap(m => [sum('income',m),sum('expense',m)])
   );
 
+  const recentExpenses = [...data.transactions]
+    .filter(t => t.kind === 'expense')
+    .sort(sortTx)
+    .slice(0,5);
+
   return `
-    ${heading('Vue d’ensemble','Ton argent en un coup d’œil',true)}
+    ${heading('Vue d’ensemble',
+      'Ton argent en un coup d’œil',true)}
 
     <div class="cards">
       <section class="card main-card">
@@ -665,13 +1008,15 @@ function home() {
         <div class="metric">${money(total())}</div>
         <div class="caption">Tous tes comptes</div>
       </section>
+
       <section class="card">
         <div class="caption">Disponible</div>
         <div class="metric">${money(available())}</div>
         <div class="caption">Hors projets</div>
       </section>
+
       <section class="card">
-        <div class="caption">Pour tes projets</div>
+        <div class="caption">Pour les projets</div>
         <div class="metric green">${money(reservedTotal())}</div>
         <div class="caption">Argent réservé</div>
       </section>
@@ -682,42 +1027,55 @@ function home() {
         <h2>Ce mois-ci</h2>
         <div class="line row">
           <span>${icon('down')} Revenus</span>
-          <strong class="green">+ ${money(sum('income'))}</strong>
+          <strong class="green">
+            + ${money(sum('income'))}
+          </strong>
         </div>
         <div class="line row">
           <span>${icon('up')} Dépenses</span>
-          <strong class="red">− ${money(sum('expense'))}</strong>
+          <strong class="red">
+            − ${money(sum('expense'))}
+          </strong>
         </div>
         <div class="line row">
           <strong>Différence</strong>
-          <strong>${money(sum('income')-sum('expense'))}</strong>
+          <strong>
+            ${money(sum('income')-sum('expense'))}
+          </strong>
         </div>
       </section>
+
       <section class="card">
         <h2>Mes comptes</h2>
-        ${accountRows()}
+        ${data.accounts.map(a => `
+          <div class="line row">
+            <span>${esc(a.name)}</span>
+            <strong>${money(balance(a.id))}</strong>
+          </div>`).join('')}
       </section>
     </div>
 
     <div class="cols">
       <section class="card">
         <h2>Évolution sur 6 mois</h2>
+
         <div class="graph">
-          ${months.map(m=>`
+          ${months.map(m => `
             <div class="bar-group">
               <div class="chartbar"
-                style="height:${100*sum('income',m)/max}%;
+                style="height:${sum('income',m)/max*100}%;
                   background:var(--green)"
-                title="Revenus : ${money(sum('income',m))}">
+                title="Revenus ${money(sum('income',m))}">
               </div>
               <div class="chartbar"
-                style="height:${100*sum('expense',m)/max}%;
+                style="height:${sum('expense',m)/max*100}%;
                   background:var(--red)"
-                title="Dépenses : ${money(sum('expense',m))}">
+                title="Dépenses ${money(sum('expense',m))}">
               </div>
               <div class="bar-label">${m.slice(5)}</div>
             </div>`).join('')}
         </div>
+
         <div class="legend">
           <span class="green">●</span> Revenus
           &nbsp;
@@ -727,21 +1085,25 @@ function home() {
 
       <section class="card">
         <h2>Dépenses par catégorie</h2>
+
         ${Object.entries(CATS)
-          .filter(([c])=>categorySum(c)>0)
-          .map(([c,label])=>`
+          .filter(([c]) => catSum(c)>0)
+          .map(([c,label]) => `
             <div class="line">
               <div class="row">
                 <span>${label}</span>
-                <strong>${money(categorySum(c))}</strong>
+                <strong>${money(catSum(c))}</strong>
               </div>
-              <div class="bar-track">
-                <div class="bar-fill"
+
+              <div class="track">
+                <div class="fill"
                   style="background:var(--red);
-                  width:${100*categorySum(c)/(sum('expense')||1)}%">
+                  width:${
+                    catSum(c)/(sum('expense')||1)*100
+                  }%">
                 </div>
               </div>
-            </div>`).join('')||
+            </div>`).join('') ||
           '<div class="empty">Aucune dépense ce mois.</div>'}
       </section>
     </div>
@@ -749,42 +1111,86 @@ function home() {
     <div class="cols">
       <section class="card">
         <div class="row">
-          <h2>Dernières opérations</h2>
-          <button class="btn small" data-page="operations">Voir tout</button>
+          <h2>Dernières dépenses</h2>
+          <button class="btn btn-small"
+            data-page="allExpenses">
+            Voir tout
+          </button>
         </div>
-        ${txRows([...data.transactions].sort(sortTx).slice(0,5))}
+        ${txRows(recentExpenses)}
       </section>
 
       <section class="card">
         <div class="row">
           <h2>Projets</h2>
-          <button class="btn small" data-page="projects">Voir tout</button>
+          <button class="btn btn-small"
+            data-page="allProjects">
+            Voir tout
+          </button>
         </div>
-        ${data.projects.map(p=>`
-          <div class="line">
-            <div class="row">
-              <strong>${escapeHtml(p.name)}</strong>
-              <span class="caption">
-                ${money(reserved(p.id))} / ${money(p.target)}
-              </span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill"
-                style="width:${Math.min(100,100*reserved(p.id)/p.target)}%">
-              </div>
-            </div>
-          </div>`).join('')||
-          '<div class="empty">Aucun projet ajouté.</div>'}
+        ${projectRows()}
       </section>
     </div>`;
 }
 
-function operationForm() {
-  const t=data.transactions.find(x=>x.id===editTx);
+/* ==============================
+   PAGES DE CONSULTATION
+============================== */
+
+function backButton(destination='home',text='Retour à l’accueil') {
+  return `
+    <button class="btn btn-small"
+      data-page="${destination}">
+      ${icon('back')} ${text}
+    </button>`;
+}
+
+/* Pas de formulaire d'ajout sur cette page */
+function allExpenses() {
+  const expenses = [...data.transactions]
+    .filter(t => t.kind === 'expense')
+    .sort(sortTx);
+
+  return `
+    ${heading('Toutes les dépenses','Historique de tes achats')}
+
+    ${backButton()}
+
+    <section class="card" style="margin-top:16px">
+      <div class="read-only">
+        Cette page sert uniquement à consulter tes dépenses.
+      </div>
+      ${txRows(expenses)}
+    </section>`;
+}
+
+/* Pas de formulaire d'ajout sur cette page */
+function allProjects() {
+  return `
+    ${heading('Tous mes projets',
+      'Suivi de tes objectifs d’épargne')}
+
+    ${backButton()}
+
+    <section class="card" style="margin-top:16px">
+      <div class="read-only">
+        Cette page sert uniquement à consulter tes projets.
+      </div>
+      ${projectRows(true)}
+    </section>`;
+}
+
+/* ==============================
+   OPÉRATIONS
+============================== */
+
+function txForm() {
+  const t = data.transactions.find(x => x.id === editTx);
 
   return `
     <section class="card">
-      <h2>${t?'Modifier':'Ajouter'} une opération</h2>
+      <h2>${t ? 'Modifier' : 'Ajouter'} une opération</h2>
+
       <form id="txForm">
         <div class="formgrid">
           ${select('Type','kind',[
@@ -793,66 +1199,76 @@ function operationForm() {
             ['transfer','Transfert']
           ],kind)}
 
-          ${field('Montant (CHF)','amount',t?.amount||'',
-            'number','min="0.01" step="0.01" required')}
+          ${field('Montant (CHF)','amount',
+            t?.amount||'','number',
+            'min="0.01" step="0.01" required')}
 
-          ${field('Date','date',t?.date||now(),
-            'date','required')}
+          ${field('Date','date',
+            t?.date||now(),'date','required')}
 
-          ${field('Description','description',t?.description||'',
-            'text','maxlength="100"')}
+          ${field('Description','description',
+            t?.description||'','text','maxlength="100"')}
 
-          ${kind==='transfer'
-            ?select('Compte de départ','fromId',
-              data.accounts.map(a=>[a.id,a.name]),
-              t?.fromId||data.accounts[0]?.id)
-             +select('Compte d’arrivée','toId',
-              data.accounts.map(a=>[a.id,a.name]),
-              t?.toId||data.accounts[1]?.id)
-            :select('Compte','accountId',
-              data.accounts.map(a=>[a.id,a.name]),
-              t?.accountId||data.accounts[0]?.id)
-             +(kind==='expense'
-               ?select('Catégorie','category',
-                 Object.entries(CATS),t?.category||'food')
-               :'')
+          ${kind === 'transfer'
+            ? select('Compte de départ','fromId',
+                data.accounts.map(a => [a.id,a.name]),
+                t?.fromId||data.accounts[0]?.id)
+              +select('Compte d’arrivée','toId',
+                data.accounts.map(a => [a.id,a.name]),
+                t?.toId||data.accounts[1]?.id)
+            : select('Compte','accountId',
+                data.accounts.map(a => [a.id,a.name]),
+                t?.accountId||data.accounts[0]?.id)
+              +(kind === 'expense'
+                ?select('Catégorie','category',
+                  Object.entries(CATS),
+                  t?.category||'food')
+                :'')
           }
         </div>
 
         <div class="buttons">
-          <button class="btn green-btn" type="submit">
+          <button class="btn btn-primary">
             ${icon('plus')} Enregistrer
           </button>
-          ${t?'<button type="button" class="btn" data-cancel>Annuler</button>':''}
+          ${t ? `
+            <button type="button"
+              class="btn" data-cancel>
+              Annuler
+            </button>` : ''}
         </div>
       </form>
     </section>`;
 }
 
 function operations() {
-  const list=[...forMonth()]
-    .filter(t=>
-      (kindFilter==='all'
-        ||t.kind===kindFilter
-        ||t.category===kindFilter)
-      &&(!query||[
+  const list = [...forMonth()]
+    .filter(t =>
+      (kindFilter === 'all' ||
+       t.kind === kindFilter ||
+       t.category === kindFilter)
+      &&
+      (!query || [
         t.description,t.date,t.amount,t.kind,
-        accountName(t.accountId),
-        accountName(t.fromId),
-        accountName(t.toId)
+        accName(t.accountId),
+        accName(t.fromId),
+        accName(t.toId)
       ].join(' ').toLowerCase().includes(query.toLowerCase()))
-    ).sort(sortTx);
+    )
+    .sort(sortTx);
 
   return `
-    ${heading('Opérations','Ajoute et retrouve tes mouvements',true)}
+    ${heading('Opérations',
+      'Ajoute et retrouve tes mouvements',true)}
+
     <div class="cols">
-      <div>${operationForm()}</div>
+      <div>${txForm()}</div>
 
       <section class="card">
         <h2>Historique</h2>
         <div class="formgrid">
-          ${field('Rechercher','search',query,'search',
-            'placeholder="Ex. cinéma"')}
+          ${field('Rechercher','search',
+            query,'search','placeholder="Ex. cinéma"')}
 
           ${select('Filtrer','filter',[
             ['all','Toutes'],
@@ -862,43 +1278,57 @@ function operations() {
             ...Object.entries(CATS)
           ],kindFilter)}
         </div>
-        <div id="historyList">${txRows(list,true)}</div>
+
+        <div id="historyList">
+          ${txRows(list,true)}
+        </div>
       </section>
     </div>`;
 }
 
+/* ==============================
+   BUDGETS
+============================== */
+
 function budgets() {
   return `
     ${heading('Budgets mensuels',
-      'Chaque limite peut être modifiée',true)}
+      'Tes limites de dépenses',true)}
 
     <section class="card">
       <form id="budgetForm">
         <div class="cols">
-          ${Object.entries(CATS).map(([c,label])=>{
-            const spent=categorySum(c);
-            const limit=Number(data.budgets[c]||0);
+          ${Object.entries(CATS).map(([c,label]) => {
+            const spent = catSum(c);
+            const limit = Number(data.budgets[c]||0);
 
             return `
               <div class="line">
                 <div class="row">
                   <strong>${label}</strong>
-                  <span class="caption">${money(spent)} utilisés</span>
+                  <span class="caption">
+                    ${money(spent)} utilisés
+                  </span>
                 </div>
 
-                ${limit?`
-                  <div class="bar-track">
-                    <div class="bar-fill"
+                ${limit ? `
+                  <div class="track">
+                    <div class="fill"
                       style="background:${
-                        spent>limit?'var(--red)':'var(--green)'
-                      };width:${Math.min(100,100*spent/limit)}%">
+                        spent>limit
+                          ?'var(--red)'
+                          :'var(--green)'
+                      };width:${
+                        Math.min(100,spent/limit*100)
+                      }%">
                     </div>
                   </div>
+
                   <div class="caption">
                     ${spent>limit
                       ?'Dépassement : '+money(spent-limit)
                       :'Reste : '+money(limit-spent)}
-                  </div>`:''}
+                  </div>` : ''}
 
                 ${field('Limite mensuelle (CHF)',
                   'budget_'+c,limit||'','number',
@@ -908,53 +1338,62 @@ function budgets() {
         </div>
 
         <div class="buttons">
-          <button class="btn green-btn">Enregistrer les budgets</button>
+          <button class="btn btn-primary">
+            Enregistrer les budgets
+          </button>
         </div>
       </form>
     </section>`;
 }
 
+/* ==============================
+   PROJETS
+============================== */
+
 function forecast(p) {
-  const left=Math.max(0,p.target-reserved(p.id));
-  if(left<=0) return 'Objectif atteint.';
+  const left = Math.max(0,p.target-reserved(p.id));
 
-  const incomes=[...data.transactions]
-    .filter(t=>t.kind==='income')
-    .sort(sortTx).slice(0,8);
+  if(!left) return 'Objectif atteint.';
 
-  const mean=incomes.length
-    ?incomes.reduce((s,t)=>s+t.amount,0)/incomes.length
+  const incomes = [...data.transactions]
+    .filter(t => t.kind === 'income')
+    .sort(sortTx)
+    .slice(0,8);
+
+  const mean = incomes.length
+    ?incomes.reduce((s,t) => s+t.amount,0)/incomes.length
     :0;
 
-  const step=p.ruleType==='fixed'
+  const step = p.ruleType === 'fixed'
     ?p.ruleValue
     :round(mean*p.ruleValue/100);
 
-  let txt=step>0
-    ?`Environ ${Math.ceil(left/step)} revenu(s) supplémentaire(s) similaires.`
+  let result = step>0
+    ?`Environ ${Math.ceil(left/step)} revenu(s) similaire(s) nécessaire(s).`
     :'Pas assez de données pour estimer le nombre de revenus.';
 
-  if(Number(data.monthlyEstimate)>0
-    &&p.ruleType==='percent'&&p.ruleValue>0) {
-    const monthly=data.monthlyEstimate*p.ruleValue/100;
-    txt+=` À revenu moyen constant : environ ${Math.ceil(left/monthly)} mois.`;
+  if(data.monthlyEstimate>0 &&
+     p.ruleType === 'percent' &&
+     p.ruleValue>0) {
+    result += ` Si tu gagnes en moyenne ${
+      money(data.monthlyEstimate)
+    } par mois : environ ${
+      Math.ceil(left/(data.monthlyEstimate*p.ruleValue/100))
+    } mois.`;
   }
-  return txt;
+
+  return result;
 }
 
 function projects() {
-  const selected=data.projects.find(p=>p.id===editProject);
+  const selected = data.projects.find(p => p.id === editProject);
 
   return `
-    ${heading('Projets & envies','Prépare tes prochains achats')}
-
-    <div class="notice">
-      Tu peux réserver un montant fixe ou un pourcentage de chaque revenu.
-      L'argent reste dans tes comptes tant qu'il n'est pas dépensé.
-    </div>
+    ${heading('Projets & envies')}
 
     <section class="card">
-      <h2>${selected?'Modifier le projet':'Nouveau projet'}</h2>
+      <h2>${selected ? 'Modifier le projet' : 'Nouveau projet'}</h2>
+
       <form id="projectForm">
         <div class="formgrid">
           ${field('Nom du projet','name',
@@ -980,65 +1419,77 @@ function projects() {
             ['low','Basse']
           ],selected?.priority||'normal')}
 
-          ${field('Date souhaitée (facultatif)',
-            'deadline',selected?.deadline||'','date')}
+          ${field('Date souhaitée','deadline',
+            selected?.deadline||'','date')}
         </div>
 
         <div class="buttons">
-          <button class="btn green-btn">Enregistrer</button>
-          ${selected?'<button class="btn" type="button" data-cancel>Annuler</button>':''}
+          <button class="btn btn-primary">
+            Enregistrer
+          </button>
+          ${selected ? `
+            <button class="btn" type="button" data-cancel>
+              Annuler
+            </button>` : ''}
         </div>
       </form>
     </section>
 
     <div class="cols">
-      ${data.projects.map(p=>{
-        const saved=reserved(p.id);
+      ${data.projects.map(p => {
+        const saved = reserved(p.id);
 
         return `
           <section class="card">
             <div class="row">
-              <h2>${escapeHtml(p.name)}</h2>
+              <h2>${esc(p.name)}</h2>
               <span class="tag">
-                ${p.ruleType==='fixed'
+                ${p.ruleType === 'fixed'
                   ?money(p.ruleValue)
                   :p.ruleValue+' %'} / revenu
               </span>
             </div>
 
-            <div class="metric green">${money(saved)}</div>
-            <div class="caption">Objectif : ${money(p.target)}</div>
+            <div class="metric green">
+              ${money(saved)}
+            </div>
 
-            <div class="bar-track">
-              <div class="bar-fill"
-                style="width:${Math.min(100,100*saved/p.target)}%">
+            <div class="caption">
+              Objectif : ${money(p.target)}
+            </div>
+
+            <div class="track">
+              <div class="fill"
+                style="width:${
+                  Math.min(100,saved/p.target*100)
+                }%">
               </div>
             </div>
 
             <div class="caption">
               Encore ${money(Math.max(0,p.target-saved))}
               ${p.deadline
-                ?' · Date souhaitée : '+escapeHtml(p.deadline)
+                ?' · Date souhaitée : '+esc(p.deadline)
                 :''}
             </div>
 
-            <p>${escapeHtml(forecast(p))}</p>
+            <p>${esc(forecast(p))}</p>
 
             <div class="buttons">
-              <button class="btn green-btn small"
-                data-project="add" data-id="${escapeHtml(p.id)}">
+              <button class="btn btn-primary btn-small"
+                data-project="add" data-id="${esc(p.id)}">
                 Réserver
               </button>
-              <button class="btn small"
-                data-project="release" data-id="${escapeHtml(p.id)}">
+              <button class="btn btn-small"
+                data-project="release" data-id="${esc(p.id)}">
                 Libérer
               </button>
-              <button class="btn small"
-                data-project="edit" data-id="${escapeHtml(p.id)}">
+              <button class="btn btn-small"
+                data-project="edit" data-id="${esc(p.id)}">
                 Modifier
               </button>
-              <button class="btn small red-btn"
-                data-project="delete" data-id="${escapeHtml(p.id)}">
+              <button class="btn btn-small btn-red"
+                data-project="delete" data-id="${esc(p.id)}">
                 Supprimer
               </button>
             </div>
@@ -1047,67 +1498,85 @@ function projects() {
     </div>`;
 }
 
-function due(rule) {
-  if(rule.paused||!rule.startDate) return [];
+/* ==============================
+   RÉCURRENCES
+============================== */
 
-  const out=[];
-  const start=new Date(rule.startDate+'T12:00:00');
-  const today=new Date(now()+'T12:00:00');
+function due(rule) {
+  if(rule.paused || !rule.startDate) return [];
+
+  const out = [];
+  const start = new Date(rule.startDate+'T12:00:00');
+  const today = new Date(now()+'T12:00:00');
 
   for(let i=0;i<500;i++) {
     let date;
 
-    if(rule.frequency==='weekly') {
-      date=new Date(start.getFullYear(),
-        start.getMonth(),start.getDate()+7*i,12);
-    } else if(rule.frequency==='yearly') {
-      const y=start.getFullYear()+i;
-      const m=start.getMonth();
-      date=new Date(y,m,Math.min(
+    if(rule.frequency === 'weekly') {
+      date = new Date(
+        start.getFullYear(),
+        start.getMonth(),
+        start.getDate()+7*i,
+        12
+      );
+    } else if(rule.frequency === 'yearly') {
+      const y = start.getFullYear()+i;
+      const m = start.getMonth();
+
+      date = new Date(y,m,Math.min(
         start.getDate(),
         new Date(y,m+1,0).getDate()
       ),12);
     } else {
-      const y=start.getFullYear();
-      const m=start.getMonth()+i;
-      const days=new Date(y,m+1,0).getDate();
-      date=new Date(y,m,Math.min(start.getDate(),days),12);
+      const y = start.getFullYear();
+      const m = start.getMonth()+i;
+
+      date = new Date(y,m,Math.min(
+        start.getDate(),
+        new Date(y,m+1,0).getDate()
+      ),12);
     }
 
     if(date>today) break;
 
-    const day=`${date.getFullYear()}-${
+    const day = `${date.getFullYear()}-${
       String(date.getMonth()+1).padStart(2,'0')
     }-${String(date.getDate()).padStart(2,'0')}`;
 
-    if(!data.transactions.some(t=>
-      t.recurringId===rule.id&&t.occurrenceDate===day
-    )) out.push(day);
+    if(!data.transactions.some(t =>
+      t.recurringId === rule.id &&
+      t.occurrenceDate === day
+    )) {
+      out.push(day);
+    }
   }
 
   return out;
 }
 
 function recurring() {
-  const x=data.recurring.find(r=>r.id===editRecurring);
+  const x = data.recurring.find(r => r.id === editRecurring);
 
   return `
-    ${heading('Récurrents','Abonnements et revenus habituels')}
+    ${heading('Récurrents',
+      'Abonnements et revenus habituels')}
 
     <div class="notice">
-      Les échéances sont proposées. Rien n'est ajouté à ton solde
-      sans confirmation.
+      Les échéances sont proposées.
+      Rien n’est ajouté sans confirmation.
     </div>
 
     <section class="card">
-      <h2>${x?'Modifier':'Ajouter'} une récurrence</h2>
+      <h2>${x ? 'Modifier' : 'Ajouter'} une récurrence</h2>
+
       <form id="recForm">
         <div class="formgrid">
-          ${field('Nom','description',x?.description||'',
-            'text','required')}
+          ${field('Nom','description',
+            x?.description||'','text','required')}
 
-          ${field('Montant (CHF)','amount',x?.amount||'',
-            'number','required min="0.01" step="0.01"')}
+          ${field('Montant (CHF)','amount',
+            x?.amount||'','number',
+            'required min="0.01" step="0.01"')}
 
           ${select('Type','kind',[
             ['expense','Dépense'],
@@ -1124,25 +1593,33 @@ function recurring() {
             x?.startDate||now(),'date','required')}
 
           ${select('Compte','accountId',
-            data.accounts.map(a=>[a.id,a.name]),
+            data.accounts.map(a => [a.id,a.name]),
             x?.accountId||data.accounts[0]?.id)}
 
           ${select('Catégorie (dépense)','category',
-            Object.entries(CATS),x?.category||'other')}
+            Object.entries(CATS),
+            x?.category||'other')}
         </div>
 
         <div class="buttons">
-          <button class="btn green-btn">Enregistrer</button>
-          ${x?'<button class="btn" type="button" data-cancel>Annuler</button>':''}
+          <button class="btn btn-primary">
+            Enregistrer
+          </button>
+          ${x ? `
+            <button class="btn" type="button" data-cancel>
+              Annuler
+            </button>` : ''}
         </div>
       </form>
     </section>
 
-    ${data.recurring.map(r=>`
+    ${data.recurring.map(r => `
       <section class="card">
         <div class="row">
-          <h2>${escapeHtml(r.description)}</h2>
-          <strong class="${r.kind==='income'?'green':'red'}">
+          <h2>${esc(r.description)}</h2>
+          <strong class="${
+            r.kind==='income'?'green':'red'
+          }">
             ${money(r.amount)}
           </strong>
         </div>
@@ -1151,7 +1628,8 @@ function recurring() {
           ${r.frequency==='weekly'
             ?'Chaque semaine'
             :r.frequency==='monthly'
-              ?'Chaque mois':'Chaque année'}
+              ?'Chaque mois'
+              :'Chaque année'}
           ·
           ${r.paused
             ?'En pause'
@@ -1159,92 +1637,366 @@ function recurring() {
         </div>
 
         <div class="buttons">
-          <button class="btn green-btn small"
-            data-rec="record" data-id="${escapeHtml(r.id)}"
+          <button class="btn btn-primary btn-small"
+            data-rec="record" data-id="${esc(r.id)}"
             ${!due(r).length?'disabled':''}>
             Confirmer échéances
           </button>
-          <button class="btn small"
-            data-rec="pause" data-id="${escapeHtml(r.id)}">
+          <button class="btn btn-small"
+            data-rec="pause" data-id="${esc(r.id)}">
             ${r.paused?'Reprendre':'Pause'}
           </button>
-          <button class="btn small"
-            data-rec="edit" data-id="${escapeHtml(r.id)}">
+          <button class="btn btn-small"
+            data-rec="edit" data-id="${esc(r.id)}">
             Modifier
           </button>
-          <button class="btn small red-btn"
-            data-rec="delete" data-id="${escapeHtml(r.id)}">
+          <button class="btn btn-small btn-red"
+            data-rec="delete" data-id="${esc(r.id)}">
             Supprimer
           </button>
         </div>
       </section>`).join('')}`;
 }
 
-function settings() {
+/* ==============================
+   RÈGLE BUDGÉTAIRE
+============================== */
+
+function rulePreview() {
+  const R = data.allocationRule;
+
+  const keys = ['needs','wants','savings'];
+  const colors = ['#f4f6f5','#f16a72','#39c98b'];
+
   return `
-    ${heading('Paramètres','Gère tes comptes et tes estimations')}
+    <div class="distribution">
+      ${keys.map((k,i) => `
+        <div style="
+          width:${Math.max(0,Math.min(100,R[k].percent))}%;
+          background:${colors[i]}">
+        </div>`).join('')}
+    </div>
+
+    <div class="allocation">
+      ${keys.map((k,i) => `
+        <div>
+          <div class="caption">
+            ${esc(R[k].name)} · ${R[k].percent} %
+          </div>
+
+          <strong
+            class="${i===1?'red':i===2?'green':''}"
+            id="preview-${k}">
+            ${money(round(simAmount*R[k].percent/100))}
+          </strong>
+
+          <div class="caption">
+            ${esc(R[k].description)}
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+/* ==============================
+   PARAMÈTRES
+============================== */
+
+function settings() {
+  const R = data.allocationRule;
+
+  return `
+    ${heading('Paramètres',
+      'Comptes et répartition de ton argent')}
 
     <div class="cols">
       <section class="card">
         <h2>Mes comptes</h2>
 
-        ${data.accounts.map(a=>`
+        ${data.accounts.map(a => `
           <div class="line row">
             <div>
-              <strong>${escapeHtml(a.name)}</strong>
+              <strong>${esc(a.name)}</strong>
               <div class="caption">
-                Solde actuel : ${money(balance(a.id))}
+                Actuel : ${money(balance(a.id))}
               </div>
               <div class="caption">
-                Solde de départ : ${money(a.opening)}
+                Départ : ${money(a.opening)}
               </div>
             </div>
-            <button class="btn small"
-              data-account="${escapeHtml(a.id)}">Modifier</button>
+
+            <button class="btn btn-small"
+              data-account="${esc(a.id)}">
+              Modifier
+            </button>
           </div>`).join('')}
 
         <form id="accountForm">
           <div class="formgrid">
-            ${field('Nom du nouveau compte','name',
+            ${field('Nouveau compte','name',
               '','text','required maxlength="50"')}
+
             ${field('Solde de départ (CHF)','opening',
               '0','number','required step="0.01"')}
           </div>
-          <div class="buttons">
-            <button class="btn green-btn">Ajouter un compte</button>
-          </div>
+
+          <button class="btn btn-primary">
+            Ajouter
+          </button>
         </form>
       </section>
 
       <section class="card">
-        <h2>Estimation des revenus</h2>
+        <h2>Revenus irréguliers</h2>
+
         <p>
-          Si tes revenus sont irréguliers, indique une moyenne mensuelle
-          facultative pour estimer la durée de tes projets.
+          Tu peux indiquer une moyenne mensuelle estimée.
+          Elle sert uniquement aux prévisions de tes projets.
         </p>
 
         <form id="estimateForm">
-          ${field('Revenu moyen par mois (CHF)','estimate',
-            data.monthlyEstimate||0,
-            'number','min="0" step="0.01"')}
+          ${field('Revenu mensuel moyen (CHF)','estimate',
+            data.monthlyEstimate||0,'number',
+            'min="0" step="0.01"')}
+
           <div class="buttons">
-            <button class="btn green-btn">Enregistrer</button>
+            <button class="btn btn-primary">
+              Enregistrer
+            </button>
           </div>
         </form>
       </section>
-    </div>`;
+    </div>
+
+    <section class="card">
+      <div class="row">
+        <h2>Ma règle de répartition</h2>
+
+        <button class="btn btn-small"
+          data-page="advice">
+          ${icon('info')} Explications
+        </button>
+      </div>
+
+      <p>
+        Personnalise les catégories et leurs pourcentages.
+        Le total doit faire exactement 100 %.
+      </p>
+
+      <form id="ruleForm">
+        <div class="cols">
+          ${[
+            ['needs','Besoins'],
+            ['wants','Envies'],
+            ['savings','Épargne']
+          ].map(([key,label]) => `
+            <div class="line">
+              <h3>${label}</h3>
+
+              <div class="formgrid">
+                ${field('Nom','ruleName_'+key,
+                  R[key].name,'text',
+                  'required maxlength="30"')}
+
+                ${field('Pourcentage',
+                  'rulePercent_'+key,
+                  R[key].percent,
+                  'number',
+                  'required min="0" max="100" step="0.01"')}
+              </div>
+
+              ${field('À quoi sert cette part ?',
+                'ruleDescription_'+key,
+                R[key].description,
+                'text','maxlength="160"')}
+            </div>`).join('')}
+        </div>
+
+        <div class="buttons">
+          <button class="btn btn-primary">
+            Enregistrer ma règle
+          </button>
+
+          <button class="btn" type="button"
+            id="resetRule">
+            Règle 50/30/20 par défaut
+          </button>
+        </div>
+      </form>
+
+      <div class="section-sep"></div>
+
+      <h2>Simuler un revenu</h2>
+
+      ${field('Montant reçu (CHF)','simulate',
+        simAmount,'number','min="0" step="0.01"')}
+
+      ${rulePreview()}
+
+      <div class="caption">
+        La simulation est informative et ne réserve
+        aucun argent automatiquement.
+      </div>
+    </section>`;
 }
 
+/* ==============================
+   PAGE D'EXPLICATION
+============================== */
+
+function advice() {
+  return `
+    ${heading('Comment gérer mon argent ?',
+      'Méthodes et conseils pratiques')}
+
+    ${backButton('settings','Retour aux paramètres')}
+
+    <section class="card" style="margin-top:16px">
+      <div class="section-number">
+        01 · RÉPARTITION
+      </div>
+
+      <h2>Répartir chaque revenu</h2>
+
+      <p>
+        La méthode 50/30/20 répartit habituellement
+        le revenu net entre besoins (50 %),
+        envies (30 %) et épargne (20 %).
+        Ce n’est pas une obligation.
+      </p>
+
+      <p>Ta répartition personnelle actuelle est :</p>
+
+      ${rulePreview()}
+
+      <p>
+        Si tu vis chez tes parents et que tu as peu de
+        dépenses indispensables, tu peux choisir une
+        épargne plus élevée. Si tes revenus sont faibles
+        ou irréguliers, mieux vaut une règle que tu
+        peux tenir.
+      </p>
+
+      <div class="section-sep"></div>
+
+      <div class="section-number">
+        02 · SE PAYER EN PREMIER
+      </div>
+
+      <h2>Mettre de côté dès que tu reçois de l’argent</h2>
+
+      <p>
+        À chaque revenu, réserve d’abord le montant
+        prévu pour l’épargne, puis utilise le reste
+        pour tes dépenses.
+      </p>
+
+      <p>
+        Par exemple, avec 200 CHF reçus et 25 %
+        d’épargne, tu réserves 50 CHF.
+      </p>
+
+      <div class="section-sep"></div>
+
+      <div class="section-number">
+        03 · ENVELOPPES
+      </div>
+
+      <h2>Fixer une limite par catégorie</h2>
+
+      <p>
+        Attribue une somme maximale à la nourriture,
+        aux sorties et aux autres dépenses.
+        La page Budgets te permet de suivre
+        ces limites.
+      </p>
+
+      <div class="section-sep"></div>
+
+      <div class="section-number">
+        04 · OBJECTIFS
+      </div>
+
+      <h2>Économiser pour un achat précis</h2>
+
+      <p>
+        Crée un projet pour ton permis, un voyage
+        ou un achat.
+        Décide d’un montant fixe ou d’un pourcentage
+        à mettre de côté à chaque revenu.
+      </p>
+
+      <p>
+        Réserver de l’argent pour un projet ne le retire
+        pas de ton solde bancaire.
+      </p>
+
+      <div class="section-sep"></div>
+
+      <div class="section-number">
+        05 · REVENUS IRRÉGULIERS
+      </div>
+
+      <h2>Ne pas compter sur un salaire non garanti</h2>
+
+      <p>
+        Si tes revenus changent d’un mois à l’autre,
+        applique ton pourcentage à chaque rentrée
+        d’argent, sans objectif mensuel obligatoire.
+      </p>
+
+      <p>
+        Ne considère pas un revenu futur comme
+        déjà disponible.
+      </p>
+
+      <div class="section-sep"></div>
+
+      <div class="section-number">
+        06 · IMPRÉVUS
+      </div>
+
+      <h2>Garder une réserve accessible</h2>
+
+      <p>
+        Conserve une partie de ton argent pour
+        une dépense inattendue plutôt que de tout
+        attribuer à tes projets.
+      </p>
+
+      <p>
+        Le montant dépend de tes dépenses réelles
+        et de l’aide financière dont tu disposes.
+      </p>
+    </section>`;
+}
+
+/* ==============================
+   AFFICHAGE ET NAVIGATION
+============================== */
+
 function render() {
-  const screens={
-    home,operations,budgets,projects,recurring,settings
+  const views = {
+    home,
+    allExpenses,
+    allProjects,
+    operations,
+    budgets,
+    projects,
+    recurring,
+    settings,
+    advice
   };
 
-  document.getElementById('app').innerHTML=`
+  document.getElementById('app').innerHTML = `
     <header>
       <div class="head">
-        <div class="brand">Gestion<i>-</i>Argent</div>
-        <button class="btn small" data-page="settings"
+        <div class="brand">
+          ${brandLogo()}
+          <span>Gestion-Argent</span>
+        </div>
+
+        <button class="btn btn-small"
+          data-page="settings"
           aria-label="Paramètres">
           ${icon('settings')}
         </button>
@@ -1253,71 +2005,90 @@ function render() {
 
     <div class="layout">
       <nav aria-label="Navigation principale">
-        ${NAV.map(([k,i,t])=>`
-          <button class="${k===page?'active':''}"
-            data-page="${k}">
-            ${icon(i)} ${t}
+        ${NAV.map(([k,i,name]) => `
+          <button data-page="${k}"
+            class="${k===page?'active':''}">
+            ${icon(i)} ${name}
           </button>`).join('')}
       </nav>
 
-      <main>${screens[page]()}</main>
+      <main>${views[page]()}</main>
     </div>
 
     <div class="bottomnav">
-      ${NAV.filter(x=>x[0]!=='settings')
-        .map(([k,i,t])=>`
-          <button class="${k===page?'active':''}"
-            data-page="${k}">
+      ${NAV.filter(x => x[0]!=='settings')
+        .map(([k,i,name]) => `
+          <button data-page="${k}"
+            class="${k===page?'active':''}">
             ${icon(i)}
-            <span>${t}</span>
+            <span>${name}</span>
           </button>`).join('')}
     </div>`;
 }
 
 function go(to) {
-  page=to;
-  editTx=editProject=editRecurring=null;
+  page = to;
+  editTx = null;
+  editProject = null;
+  editRecurring = null;
   render();
-  scrollTo(0,0);
+  window.scrollTo(0,0);
 }
 
+/* ==============================
+   RÉPARTITION D'UN REVENU
+============================== */
+
 function allocate(txId) {
-  const t=data.transactions.find(x=>x.id===txId);
-  if(!t||t.kind!=='income') return;
+  const t = data.transactions.find(x => x.id===txId);
 
-  if(data.reserves.some(x=>x.sourceTx===txId))
-    return alert(
-      'Ce revenu a déjà été réparti. Tu peux ajouter une réserve manuellement.'
-    );
+  if(!t || t.kind!=='income') return;
 
-  let freeRoom=Math.max(0,Math.min(t.amount,available()));
-  const proposals=[];
+  if(data.reserves.some(x => x.sourceTx===txId)) {
+    return alert('Ce revenu a déjà été réparti.');
+  }
 
-  for(const p of data.projects) {
-    const remaining=Math.max(0,p.target-reserved(p.id));
-    const desired=p.ruleType==='fixed'
+  let room = Math.max(0,Math.min(t.amount,available()));
+
+  const priority = {
+    high:0,
+    normal:1,
+    low:2
+  };
+
+  const projects = [...data.projects].sort((a,b) =>
+    (priority[a.priority]??1) -
+    (priority[b.priority]??1)
+  );
+
+  const proposals = [];
+
+  for(const p of projects) {
+    const rest = Math.max(0,p.target-reserved(p.id));
+
+    const desired = p.ruleType==='fixed'
       ?Number(p.ruleValue)
       :round(t.amount*p.ruleValue/100);
 
-    const amount=round(
-      Math.max(0,Math.min(desired,remaining,freeRoom))
+    const amount = round(
+      Math.max(0,Math.min(desired,rest,room))
     );
 
     if(amount>0) {
       proposals.push({p,amount});
-      freeRoom=round(freeRoom-amount);
+      room = round(room-amount);
     }
   }
 
   if(!proposals.length) return;
 
   if(confirm(
-    'Réserver une partie de ce revenu ?\n\n'
-    +proposals.map(x=>
+    'Réserver une partie de ce revenu ?\n\n' +
+    proposals.map(x =>
       x.p.name+' : '+money(x.amount)
     ).join('\n')
   )) {
-    for(const x of proposals)
+    for(const x of proposals) {
       data.reserves.push({
         id:uid(),
         projectId:x.p.id,
@@ -1325,129 +2096,173 @@ function allocate(txId) {
         date:t.date,
         sourceTx:t.id
       });
+    }
     save();
   }
 }
 
-function txSubmit(form) {
-  const f=new FormData(form);
-  const amount=round(num(f.get('amount')));
-  const date=String(f.get('date')||'');
-  const chosen=String(f.get('kind'));
+/* ==============================
+   ENREGISTREMENT
+============================== */
 
-  if(!Number.isFinite(amount)||amount<=0||!date)
+function submitTx(f) {
+  const amount = round(num(f.get('amount')));
+  const date = String(f.get('date')||'');
+  const chosen = String(f.get('kind'));
+
+  if(!Number.isFinite(amount)||amount<=0||!date) {
     return alert('Montant ou date invalide.');
+  }
 
-  const old=data.transactions.find(t=>t.id===editTx);
+  const old = data.transactions.find(t => t.id===editTx);
 
-  const t={
+  const t = {
     id:old?.id||uid(),
     kind:chosen,
-    amount,date,
+    amount,
+    date,
     description:String(f.get('description')||'').trim()
   };
 
   if(chosen==='transfer') {
-    t.fromId=f.get('fromId');
-    t.toId=f.get('toId');
-    if(t.fromId===t.toId)
+    t.fromId = f.get('fromId');
+    t.toId = f.get('toId');
+
+    if(t.fromId===t.toId) {
       return alert('Choisis deux comptes différents.');
+    }
   } else {
-    t.accountId=f.get('accountId');
-    if(chosen==='expense')
-      t.category=f.get('category');
+    t.accountId = f.get('accountId');
+
+    if(chosen==='expense') {
+      t.category = f.get('category');
+    }
   }
 
   if(old) {
-    t.recurringId=old.recurringId;
-    t.occurrenceDate=old.occurrenceDate;
+    t.recurringId = old.recurringId;
+    t.occurrenceDate = old.occurrenceDate;
 
-    if(old.kind!==chosen||old.amount!==amount||old.date!==date)
-      data.reserves=data.reserves.filter(x=>x.sourceTx!==old.id);
+    if(old.kind!==chosen ||
+       old.amount!==amount ||
+       old.date!==date) {
+      data.reserves = data.reserves.filter(r =>
+        r.sourceTx!==old.id
+      );
+    }
 
-    data.transactions=data.transactions.map(x=>
+    data.transactions = data.transactions.map(x =>
       x.id===old.id?t:x
     );
   } else {
     data.transactions.push(t);
   }
 
-  editTx=null;
-  kind=chosen;
+  editTx = null;
+  kind = chosen;
+
   save();
 
-  if(!old&&chosen==='income') allocate(t.id);
+  if(!old && chosen==='income') {
+    allocate(t.id);
+  }
 }
 
-function onSubmit(event) {
-  event.preventDefault();
+function onSubmit(ev) {
+  ev.preventDefault();
 
-  const form=event.target;
-  const f=new FormData(form);
+  const form = ev.target;
+  const f = new FormData(form);
 
-  if(form.id==='txForm')
-    return txSubmit(form);
+  if(form.id==='txForm') {
+    return submitTx(f);
+  }
 
   if(form.id==='budgetForm') {
+    const updated = {...data.budgets};
+
     for(const c of Object.keys(CATS)) {
-      const v=num(f.get('budget_'+c)||0);
+      const v = num(f.get('budget_'+c)||0);
 
-      if(!Number.isFinite(v)||v<0)
+      if(!Number.isFinite(v)||v<0) {
         return alert('Budget invalide.');
+      }
 
-      data.budgets[c]=round(v);
+      updated[c] = round(v);
     }
+
+    data.budgets = updated;
     return save();
   }
 
   if(form.id==='projectForm') {
-    const name=String(f.get('name')||'').trim();
-    const target=round(num(f.get('target')));
-    const ruleType=f.get('ruleType');
-    const ruleValue=round(num(f.get('ruleValue')));
+    const name = String(f.get('name')||'').trim();
+    const target = round(num(f.get('target')));
+    const ruleType = f.get('ruleType');
+    const ruleValue = round(num(f.get('ruleValue')));
 
-    if(!name||!Number.isFinite(target)||target<=0
-      ||!Number.isFinite(ruleValue)||ruleValue<0
-      ||(ruleType==='percent'&&ruleValue>100))
+    if(!name ||
+       !Number.isFinite(target) ||
+       target<=0 ||
+       !Number.isFinite(ruleValue) ||
+       ruleValue<0 ||
+       (ruleType==='percent' && ruleValue>100)) {
       return alert('Projet invalide.');
+    }
 
-    const others=data.projects
-      .filter(x=>x.id!==editProject&&x.ruleType==='percent')
-      .reduce((s,x)=>s+Number(x.ruleValue),0);
+    const other = data.projects
+      .filter(x =>
+        x.id!==editProject &&
+        x.ruleType==='percent'
+      )
+      .reduce((s,x) => s+Number(x.ruleValue),0);
 
-    if(ruleType==='percent'&&others+ruleValue>100.001)
-      return alert('La somme des pourcentages dépasse 100 %.');
+    if(ruleType==='percent' && other+ruleValue>100.001) {
+      return alert(
+        'La somme des pourcentages des projets dépasse 100 %.'
+      );
+    }
 
-    const item={
+    const item = {
       id:editProject||uid(),
-      name,target,ruleType,ruleValue,
+      name,
+      target,
+      ruleType,
+      ruleValue,
       priority:f.get('priority'),
       deadline:f.get('deadline')
     };
 
-    if(editProject)
-      data.projects=data.projects.map(p=>
+    if(editProject) {
+      data.projects = data.projects.map(p =>
         p.id===editProject?item:p
       );
-    else
+    } else {
       data.projects.push(item);
+    }
 
-    editProject=null;
+    editProject = null;
     return save();
   }
 
   if(form.id==='recForm') {
-    const description=String(f.get('description')||'').trim();
-    const amount=round(num(f.get('amount')));
+    const description =
+      String(f.get('description')||'').trim();
 
-    if(!description||!Number.isFinite(amount)||amount<=0)
+    const amount = round(num(f.get('amount')));
+
+    if(!description||!Number.isFinite(amount)||amount<=0) {
       return alert('Récurrence invalide.');
+    }
 
-    const old=data.recurring.find(x=>x.id===editRecurring);
+    const old = data.recurring.find(x =>
+      x.id===editRecurring
+    );
 
-    const item={
+    const item = {
       id:editRecurring||uid(),
-      description,amount,
+      description,
+      amount,
       kind:f.get('kind'),
       frequency:f.get('frequency'),
       startDate:f.get('startDate'),
@@ -1456,117 +2271,200 @@ function onSubmit(event) {
       paused:old?.paused||false
     };
 
-    if(editRecurring)
-      data.recurring=data.recurring.map(x=>
+    if(editRecurring) {
+      data.recurring = data.recurring.map(x =>
         x.id===editRecurring?item:x
       );
-    else
+    } else {
       data.recurring.push(item);
+    }
 
-    editRecurring=null;
+    editRecurring = null;
     return save();
   }
 
   if(form.id==='accountForm') {
-    const name=String(f.get('name')||'').trim();
-    const opening=round(num(f.get('opening')));
+    const name = String(f.get('name')||'').trim();
+    const opening = round(num(f.get('opening')));
 
-    if(!name||!Number.isFinite(opening))
+    if(!name||!Number.isFinite(opening)) {
       return alert('Compte invalide.');
+    }
 
     data.accounts.push({
-      id:uid(),name,opening
+      id:uid(),
+      name,
+      opening
     });
+
     return save();
   }
 
   if(form.id==='estimateForm') {
-    const amount=round(num(f.get('estimate')));
+    const value = round(num(f.get('estimate')));
 
-    if(!Number.isFinite(amount)||amount<0)
+    if(!Number.isFinite(value)||value<0) {
       return alert('Montant invalide.');
+    }
 
-    data.monthlyEstimate=amount;
+    data.monthlyEstimate = value;
+    return save();
+  }
+
+  /* Sauvegarde de la règle personnalisée */
+
+  if(form.id==='ruleForm') {
+    const next = {};
+    let sumP = 0;
+
+    for(const k of ['needs','wants','savings']) {
+      const name =
+        String(f.get('ruleName_'+k)||'').trim();
+
+      const percent =
+        round(num(f.get('rulePercent_'+k)));
+
+      const description =
+        String(f.get('ruleDescription_'+k)||'').trim();
+
+      if(!name ||
+         !Number.isFinite(percent) ||
+         percent<0 ||
+         percent>100) {
+        return alert(
+          'Vérifie les pourcentages et les noms.'
+        );
+      }
+
+      next[k] = {
+        name,
+        percent,
+        description
+      };
+
+      sumP += percent;
+    }
+
+    if(Math.abs(sumP-100)>0.005) {
+      return alert(
+        'Les trois pourcentages doivent faire ' +
+        'exactement 100 %. Total actuel : ' +
+        sumP.toFixed(2) + ' %.'
+      );
+    }
+
+    data.allocationRule = next;
     return save();
   }
 }
 
-function onClick(event) {
-  const b=event.target.closest('button');
+/* ==============================
+   BOUTONS
+============================== */
+
+function onClick(ev) {
+  const b = ev.target.closest('button');
   if(!b) return;
 
-  if(b.dataset.page)
+  if(b.dataset.page) {
     return go(b.dataset.page);
+  }
 
   if(b.hasAttribute('data-cancel')) {
-    editTx=editProject=editRecurring=null;
+    editTx = null;
+    editProject = null;
+    editRecurring = null;
     return render();
   }
 
   if(b.dataset.editTx) {
-    editTx=b.dataset.editTx;
-    kind=data.transactions.find(t=>t.id===editTx)?.kind||'expense';
-    page='operations';
+    editTx = b.dataset.editTx;
+    kind = data.transactions.find(t =>
+      t.id===editTx
+    )?.kind||'expense';
+
+    page = 'operations';
     return render();
   }
 
   if(b.dataset.delTx) {
     if(!confirm('Supprimer cette opération ?')) return;
 
-    data.transactions=data.transactions.filter(t=>
+    data.transactions = data.transactions.filter(t =>
       t.id!==b.dataset.delTx
     );
-    data.reserves=data.reserves.filter(r=>
+
+    data.reserves = data.reserves.filter(r =>
       r.sourceTx!==b.dataset.delTx
     );
+
     return save();
   }
 
-  if(b.dataset.allocate)
+  if(b.dataset.allocate) {
     return allocate(b.dataset.allocate);
+  }
+
+  /* Actions des projets */
 
   if(b.dataset.project) {
-    const p=data.projects.find(x=>x.id===b.dataset.id);
+    const p = data.projects.find(x =>
+      x.id===b.dataset.id
+    );
+
     if(!p) return;
 
-    const action=b.dataset.project;
+    const action = b.dataset.project;
 
     if(action==='edit') {
-      editProject=p.id;
-      page='projects';
+      editProject = p.id;
+      page = 'projects';
       return render();
     }
 
     if(action==='delete') {
-      if(reserved(p.id)>0)
-        return alert('Libère d’abord tout l’argent réservé.');
+      if(reserved(p.id)>0) {
+        return alert(
+          'Libère d’abord tout l’argent réservé.'
+        );
+      }
 
       if(!confirm('Supprimer le projet ?')) return;
 
-      data.projects=data.projects.filter(x=>x.id!==p.id);
-      data.reserves=data.reserves.filter(x=>
+      data.projects = data.projects.filter(x =>
+        x.id!==p.id
+      );
+
+      data.reserves = data.reserves.filter(x =>
         x.projectId!==p.id
       );
+
       return save();
     }
 
-    const max=action==='add'
+    const max = action==='add'
       ?Math.max(0,Math.min(
-        available(),p.target-reserved(p.id)
+        available(),
+        p.target-reserved(p.id)
       ))
       :reserved(p.id);
 
-    const text=prompt(
-      `Montant à ${action==='add'?'réserver':'libérer'} (max. ${money(max)})`,
+    const input = prompt(
+      `Montant à ${
+        action==='add'?'réserver':'libérer'
+      } (max. ${money(max)})`,
       '20'
     );
 
-    if(text===null) return;
+    if(input===null) return;
 
-    const amount=round(num(text));
+    const amount = round(num(input));
 
-    if(!Number.isFinite(amount)||amount<=0||amount>max+.001)
+    if(!Number.isFinite(amount) ||
+       amount<=0 ||
+       amount>max+0.001) {
       return alert('Montant invalide.');
+    }
 
     data.reserves.push({
       id:uid(),
@@ -1578,41 +2476,52 @@ function onClick(event) {
     return save();
   }
 
+  /* Actions des récurrences */
+
   if(b.dataset.rec) {
-    const r=data.recurring.find(x=>x.id===b.dataset.id);
+    const r = data.recurring.find(x =>
+      x.id===b.dataset.id
+    );
+
     if(!r) return;
 
-    const action=b.dataset.rec;
+    const action = b.dataset.rec;
 
     if(action==='edit') {
-      editRecurring=r.id;
-      page='recurring';
+      editRecurring = r.id;
+      page = 'recurring';
       return render();
     }
 
     if(action==='pause') {
-      r.paused=!r.paused;
+      r.paused = !r.paused;
       return save();
     }
 
     if(action==='delete') {
       if(!confirm(
-        'Supprimer la récurrence ? Les opérations passées sont conservées.'
+        'Supprimer la récurrence ? ' +
+        'Les anciennes opérations seront conservées.'
       )) return;
 
-      data.recurring=data.recurring.filter(x=>x.id!==r.id);
+      data.recurring = data.recurring.filter(x =>
+        x.id!==r.id
+      );
+
       return save();
     }
 
     if(action==='record') {
-      const dates=due(r);
+      const dates = due(r);
+
       if(!dates.length) return;
 
       if(!confirm(
-        `Enregistrer ${dates.length} échéance(s), pour ${money(dates.length*r.amount)} ?`
+        `Enregistrer ${dates.length} échéance(s), ` +
+        `soit ${money(dates.length*r.amount)} ?`
       )) return;
 
-      for(const date of dates)
+      for(const date of dates) {
         data.transactions.push({
           id:uid(),
           kind:r.kind,
@@ -1624,75 +2533,129 @@ function onClick(event) {
           recurringId:r.id,
           occurrenceDate:date
         });
+      }
 
       return save();
     }
   }
 
+  /* Comptes */
+
   if(b.dataset.account) {
-    const a=data.accounts.find(x=>x.id===b.dataset.account);
+    const a = data.accounts.find(x =>
+      x.id===b.dataset.account
+    );
+
     if(!a) return;
 
-    const name=prompt('Nom du compte',a.name);
+    const name = prompt('Nom du compte',a.name);
     if(name===null) return;
 
-    const value=prompt('Solde de départ',a.opening);
-    if(value===null) return;
+    const entered = prompt(
+      'Solde de départ',a.opening
+    );
+    if(entered===null) return;
 
-    const amount=round(num(value));
+    const amount = round(num(entered));
 
-    if(!name.trim()||!Number.isFinite(amount))
+    if(!name.trim()||!Number.isFinite(amount)) {
       return alert('Valeur invalide.');
+    }
 
-    a.name=name.trim();
-    a.opening=amount;
+    a.name = name.trim();
+    a.opening = amount;
+
+    return save();
+  }
+
+  /* Réinitialiser la règle budgétaire */
+
+  if(b.id==='resetRule') {
+    if(!confirm(
+      'Remettre la règle 50/30/20 et ses ' +
+      'descriptions par défaut ?'
+    )) return;
+
+    data.allocationRule = defaultRule();
     return save();
   }
 }
 
-function onChange(event) {
-  const el=event.target;
+/* ==============================
+   CHAMPS INTERACTIFS
+============================== */
+
+function onChange(ev) {
+  const el = ev.target;
 
   if(el.id==='month') {
-    month=el.value;
+    month = el.value;
     return render();
   }
 
-  if(el.name==='kind'&&el.closest('#txForm')) {
-    const form=el.form;
+  if(el.name==='kind' && el.closest('#txForm')) {
+    const form = el.form;
 
-    const draft={
+    const draft = {
       amount:form.elements.amount.value,
       date:form.elements.date.value,
       description:form.elements.description.value
     };
 
-    kind=el.value;
+    kind = el.value;
     render();
 
-    const newForm=document.getElementById('txForm');
-    for(const k of Object.keys(draft))
-      newForm.elements[k].value=draft[k];
+    const next = document.getElementById('txForm');
+
+    for(const k of Object.keys(draft)) {
+      next.elements[k].value = draft[k];
+    }
 
     return;
   }
 
   if(el.name==='filter') {
-    kindFilter=el.value;
+    kindFilter = el.value;
     return render();
   }
 }
 
-function onInput(event) {
-  if(event.target.name==='search') {
-    query=event.target.value;
-    const pos=event.target.selectionStart;
+function onInput(ev) {
+  const el = ev.target;
+
+  if(el.name==='search') {
+    query = el.value;
+    const pos = el.selectionStart;
 
     render();
 
-    const input=document.querySelector('[name="search"]');
-    input?.focus();
-    input?.setSelectionRange(pos,pos);
+    const next = document.querySelector(
+      '[name="search"]'
+    );
+
+    next?.focus();
+    next?.setSelectionRange(pos,pos);
+  }
+
+  /* Simulateur de la règle */
+
+  if(el.name==='simulate') {
+    simAmount = Math.max(0,num(el.value)||0);
+
+    for(const key of ['needs','wants','savings']) {
+      const target = document.getElementById(
+        'preview-'+key
+      );
+
+      if(target) {
+        target.textContent = money(
+          round(
+            simAmount *
+            data.allocationRule[key].percent/100
+          )
+        );
+      }
+    }
   }
 }
 

@@ -1,0 +1,138 @@
+/* Modules complémentaires Gestion-Argent */
+
+.ga-final-panel {
+  margin-top: 14px;
+}
+
+.ga-final-panel h2 {
+  margin-top: 0;
+}
+
+.ga-final-error {
+  color: var(--red,#ed7777);
+  font-size: 13px;
+  margin: 7px 0;
+}
+
+.ga-search-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 9px;
+  margin: 12px 0;
+}
+
+.ga-search-grid label,
+.ga-final-dialog label {
+  display: block;
+  color: var(--muted,#adb6b4);
+  font-size: 12px;
+}
+
+.ga-search-grid input,
+.ga-final-dialog input,
+.ga-final-dialog select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  margin-top: 6px;
+  padding: 9px;
+  border: 1px solid #3a4342;
+  border-radius: 9px;
+  background: #111616;
+  color: var(--text,#fff);
+  font-size: 15px;
+}
+
+.ga-final-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border,#303737);
+}
+
+.ga-final-result:last-child {
+  border-bottom: 0;
+}
+
+.ga-final-result > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ga-final-result small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted,#adb6b4);
+  font-size: 11px;
+}
+
+.ga-final-result strong {
+  flex-shrink: 0;
+}
+
+.ga-final-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.ga-final-buttons .btn {
+  padding: 8px;
+  font-size: 12px;
+}
+
+.ga-final-dialog {
+  width: min(460px,calc(100vw - 26px));
+  max-height: 85vh;
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid var(--border,#303737);
+  border-radius: 15px;
+  background: var(--card,#171b1b);
+  color: var(--text,#fff);
+}
+
+.ga-final-dialog::backdrop {
+  background: #000b;
+}
+
+.ga-final-dialog h2 {
+  margin-top: 0;
+}
+
+.ga-final-dialog label {
+  margin: 12px 0;
+}
+
+.ga-final-dialog .ga-final-buttons {
+  margin-top: 22px;
+}
+
+.ga-final-choice {
+  display: grid;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.ga-final-choice .btn {
+  white-space: normal;
+  text-align: center;
+}
+
+@media (max-width:480px) {
+  .ga-search-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ga-search-grid label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .ga-final-result {
+    flex-wrap: wrap;
+  }
+}
